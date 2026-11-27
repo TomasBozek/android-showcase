@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Labels that belong to a component rather than to a screen. A component's own control — a back
+    arrow, a clear button, a stepper's two keys — carries the same name everywhere it appears, so
+    the string lives with the component and not in each feature that uses it.
+-->
+<resources>
+    <string name="app_drag_handle">Reorder</string>
+    <string name="app_coach_skip">Skip</string>
+    <string name="app_coach_next">Next</string>
+    <string name="app_coach_done">Done</string>
+    <string name="app_dialog_cancel">Cancel</string>
+    <string name="app_menu_open">Open the menu</string>
+    <string name="app_navigate_up">Navigate up</string>
+    <string name="app_picker_choose">Choose</string>
+    <string name="app_search">Search</string>
+    <string name="app_search_clear">Clear search</string>
+    <string name="app_stepper_decrement">One fewer</string>
+    <string name="app_stepper_increment">One more</string>
+    <string name="app_permission_continue">Continue</string>
+    <string name="app_permission_open_settings">Open settings</string>
+    <string name="app_permission_not_now">Not now</string>
+    <string name="app_toast_dismiss">Dismiss</string>
+    <string name="app_image_viewer_close">Close</string>
+    <string name="app_card_number">Card number</string>
+    <string name="app_card_number_invalid">This card number is not valid</string>
+    <string name="app_card_expiry">Expires</string>
+    <string name="app_card_expiry_hint">MM/YY</string>
+    <string name="app_card_expiry_invalid">Not a month</string>
+    <string name="app_card_expiry_past">This card has expired</string>
+    <string name="app_card_code">Security code</string>
+    <string name="app_phone_region">Country</string>
+</resources>

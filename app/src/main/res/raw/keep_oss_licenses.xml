@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- play-services-oss-licenses inflates these by name, which R8's resource shrinker cannot see:
+     without this file every release build crashes on About → Open-source licences with
+     `Resources$NotFoundException: Resource ID #0x0`. -->
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:keep="@layout/libraries_social_licenses_*,@layout/license_menu_*,@string/license_*" />

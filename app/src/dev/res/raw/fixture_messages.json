@@ -1,0 +1,11 @@
+[
+  {
+    "id": "welcome-2026",
+    "placement": "banner",
+    "title": "Welcome to the template",
+    "body": "A message from the server, shown once until dismissed. Settings has the rest.",
+    "action": "com.example.androidproject1.dev://settings",
+    "from": "2026-01-01T00:00:00Z",
+    "until": "2027-12-31T00:00:00Z"
+  }
+]

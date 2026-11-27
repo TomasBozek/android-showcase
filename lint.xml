@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Shared lint configuration. Applied to every module by `build-logic`'s `configureAndroid`
+    (`extension.lint.lintConfig`), so a rule is raised or lowered in one place rather than 27.
+-->
+<lint>
+    <!-- Correctness issues worth failing a build over. -->
+    <issue id="StateFlowValueCalledInComposition" severity="error" />
+    <issue id="ComposableNaming" severity="error" />
+    <issue id="UnrememberedMutableState" severity="error" />
+    <issue id="ProduceStateDoesNotAssignValue" severity="error" />
+    <issue id="CoroutineCreationDuringComposition" severity="error" />
+    <issue id="FlowOperatorInvokedInComposition" severity="error" />
+    <issue id="AutoboxingStateCreation" severity="error" />
+
+    <!--
+        Accessibility. Errors since 3.6: every icon in :core:ui either carries a description or
+        passes null deliberately, and the components own the minimum touch target so a screen
+        cannot get it wrong.
+    -->
+    <issue id="ContentDescription" severity="error" />
+    <issue id="ClickableViewAccessibility" severity="error" />
+
+    <!-- Localisation: every user-facing string belongs in a feature's strings.xml. -->
+    <issue id="HardcodedText" severity="error" />
+    <!--
+        A resource nothing draws is a translation nobody needed. `app_name` is the one
+        exception: the launcher label comes from a manifest placeholder, but `init_project.py`
+        rewrites this string as the project's display name, so it is the rename hook, not dead.
+    -->
+    <issue id="UnusedResources" severity="error">
+        <ignore regexp="R\.string\.app_name" />
+    </issue>
+
+    <!-- Security. -->
+    <issue id="UnsafeIntentLaunch" severity="error" />
+    <issue id="AllowBackup" severity="error" />
+
+    <!--
+        Dependency freshness is Renovate's job (I6), not the build's — an out-of-date library
+        should not fail a build that was passing yesterday.
+    -->
+    <issue id="GradleDependency" severity="informational" />
+    <issue id="AndroidGradlePluginVersion" severity="informational" />
+    <issue id="NewerVersionAvailable" severity="informational" />
+</lint>

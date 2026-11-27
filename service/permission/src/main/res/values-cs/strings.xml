@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="permission_allow">Povolit</string>
+    <string name="permission_open_settings">Otevřít nastavení</string>
+</resources>

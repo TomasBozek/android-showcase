@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="checkout_address_title">Delivery address</string>
+    <string name="checkout_address_step">Step %1$d of %2$d</string>
+    <string name="checkout_address_name">Full name</string>
+    <string name="checkout_address_street">Street and number</string>
+    <string name="checkout_address_city">City</string>
+    <string name="checkout_address_postal_code">Postal code</string>
+    <string name="checkout_address_country">Country</string>
+    <string name="checkout_address_phone">Phone, for the courier</string>
+    <string name="checkout_address_phone_invalid">Enter the whole number</string>
+    <string name="checkout_address_continue">Continue to delivery</string>
+    <string name="checkout_delivery_title">Delivery</string>
+    <string name="checkout_delivery_step">Step %1$d of %2$d</string>
+    <string name="checkout_delivery_option">%1$s · %2$s</string>
+    <string name="checkout_delivery_free">Free</string>
+    <plurals name="checkout_delivery_days">
+        <item quantity="one">%1$d working day</item>
+        <item quantity="other">%1$d working days</item>
+    </plurals>
+    <string name="checkout_delivery_choose">Choose how the order travels</string>
+    <string name="checkout_delivery_continue">Continue to payment</string>
+    <string name="checkout_payment_title">Payment</string>
+    <string name="checkout_payment_step">Step %1$d of %2$d</string>
+    <string name="checkout_payment_note">Your card is charged only when the order is placed.</string>
+    <string name="checkout_payment_incomplete">Check the card\'s number, expiry and code</string>
+    <string name="checkout_payment_continue">Continue to review</string>
+    <string name="checkout_review_title">Review your order</string>
+    <string name="checkout_review_step">Step %1$d of %2$d</string>
+    <string name="checkout_review_lines">What you\'re ordering</string>
+    <string name="checkout_review_line">%1$d × %2$s</string>
+    <string name="checkout_review_address">Delivery to</string>
+    <string name="checkout_review_delivery">Delivery</string>
+    <string name="checkout_review_delivery_value">%1$s · %2$s</string>
+    <string name="checkout_review_promo">Promo code</string>
+    <string name="checkout_review_promo_applied">%1$d %% off applied</string>
+    <string name="checkout_review_promo_invalid">That code isn\'t valid</string>
+    <string name="checkout_review_apply">Apply</string>
+    <string name="checkout_review_subtotal">Subtotal</string>
+    <string name="checkout_review_discount">Discount</string>
+    <string name="checkout_review_total">Total</string>
+    <string name="checkout_review_place">Place order</string>
+    <string name="checkout_review_placing">Placing your order…</string>
+    <string name="checkout_review_placed">Order %1$s placed. Thank you.</string>
+    <string name="checkout_review_declined_title">Your card was declined</string>
+    <string name="checkout_review_declined_message">Your bank didn\'t approve the payment. Try another card.</string>
+    <string name="checkout_review_declined_funds">Your bank says there isn\'t enough on this card. Try another one.</string>
+    <string name="checkout_review_declined_confirm">Use another card</string>
+    <string name="checkout_review_payment_needed">Add your payment again to place the order.</string>
+    <string name="checkout_review_place_prompt">Place your order</string>
+    <string name="checkout_review_step_up_denied">Couldn’t confirm it’s you. The order was not placed.</string>
+    <string name="checkout_payment_google_pay">Pay with Google Pay</string>
+</resources>

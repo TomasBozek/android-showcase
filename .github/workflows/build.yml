@@ -1,0 +1,426 @@
+# Continuous integration: conventions and the generator tests, then formatting, unit tests, lint,
+# an assembled build and the screenshot goldens. Every push to main and every pull request runs it;
+# tags add the signed release build, and the weekly schedule adds the release build, the compiled
+# generator output and the Maestro flows on an emulator.
+name: Build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  # `ready_for_review` matters: a draft pull request skips the build job, so flipping it to ready
+  # has to be what starts one. Without the type list that event does not trigger a run at all.
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  schedule:
+    # Weekly, so a release-only regression is found by the schedule rather than by a release.
+    - cron: '0 6 * * 1'
+  # For the maestro job: an emulator run before a release, on demand, without waiting for Monday.
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Only a pull request cancels its own older run. A push to main or a tag never does: those are
+  # the runs whose result is the record, and a cancelled one leaves no record at all.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  changes:
+    # What the diff touches, so a pull request pays only for the checks it can actually fail.
+    # Plain git rather than a filter action: it is ten lines.
+    #
+    # Every output is true for anything that is not a pull request, so main, tags and the weekly
+    # run stay heavy. `code` is false only for a diff that is entirely documentation, and
+    # .github/workflows/ is deliberately not in that list -- a change to this file is code.
+    runs-on: ubuntu-latest
+    outputs:
+      code: ${{ steps.classify.outputs.code }}
+      generators: ${{ steps.classify.outputs.generators }}
+      ui: ${{ steps.classify.outputs.ui }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: classify
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            printf 'code=true\ngenerators=true\nui=true\n' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          files="$(git diff --name-only "$BASE" "${{ github.sha }}")"
+          echo "$files"
+          code=false; generators=false; ui=false
+          if grep -qvE '^(docs/|README\.md$|scripts/README\.md$)' <<<"$files"; then code=true; fi
+          if grep -qE '^(scripts/|feature/template/)' <<<"$files"; then generators=true; fi
+          if grep -qE '(^|/)presentation/|^core/ui/|^service/core/ui/|/test/screenshots/|^build-logic/|^gradle/' <<<"$files"; then ui=true; fi
+          printf 'code=%s\ngenerators=%s\nui=%s\n' "$code" "$generators" "$ui" >> "$GITHUB_OUTPUT"
+
+  secrets:
+    # Runs alongside the conventions job and is just as fast. A committed key is the one mistake
+    # that a later commit cannot undo — it has to be caught on the pull request that adds it.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # gitleaks scans history, not just the diff, so it needs more than the default depth.
+          fetch-depth: 0
+
+      # The binary rather than gitleaks-action: the action requires a paid licence key for
+      # organization-owned repositories, which a template should not quietly depend on.
+      - name: Scan for committed secrets
+        env:
+          GITLEAKS_VERSION: 8.28.0
+        run: |
+          curl -sSL "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+            | tar -xz gitleaks
+          ./gitleaks detect --source . --redact --no-banner
+
+  conventions:
+    # Runs first and is fast: doctor.py checks the rules no compiler enforces, and exits non-zero
+    # specifically so it can gate here. A convention violation fails before the slow build starts.
+    # Never skipped: it takes seconds.
+    needs: changes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check architectural conventions
+        run: python3 scripts/doctor.py
+
+      # Minutes rather than seconds, and it can only fail on a change to the generators or the
+      # template they clone. Unconditional on main and on the schedule.
+      - name: Test the scaffolding scripts
+        if: needs.changes.outputs.generators == 'true'
+        run: python3 scripts/test_scripts.py
+
+  build:
+    # Skipped for a documentation-only pull request (~1 minute instead of 25-30) and for a draft:
+    # a draft is a claim that the work is unfinished, not a request for a 25-minute build. Flipping
+    # it to ready fires `ready_for_review` and starts one.
+    needs: changes
+    if: >-
+      needs.changes.outputs.code == 'true' &&
+      (github.event_name != 'pull_request' || github.event.pull_request.draft == false)
+    runs-on: ubuntu-latest
+    permissions:
+      # The dependency-graph submission below writes to the repository's graph; everything else
+      # this job does is a read. Stated so the job does not depend on the repository default.
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      # Must match gradle/gradle-daemon-jvm.properties, which pins the daemon's JDK.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      # `dependency-graph` submits every configuration this job resolves to GitHub's dependency
+      # graph, which is what Dependabot *alerts* read — for a Gradle project, the only way to get
+      # them at all, and independent of Renovate, which opens one grouped pull request a week.
+      # Pushes to `main` only: the submission needs `contents: write`, which a pull request from a fork does not have, and
+      # one graph per merge is the graph anyway.
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          dependency-graph: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && 'generate-and-submit' || 'disabled' }}
+
+      # Before the build: it is fast, and a style failure should not wait on R8.
+      - name: Check formatting
+        run: ./gradlew ktlintCheck
+
+      # Named tasks rather than `build`, which is `assemble` + `check`: it assembled all six app
+      # variants, ran R8 three times and ran every test once per variant. What a pull request needs
+      # is each test once, lint over the whole graph once, and one variant that actually assembles.
+      #
+      # `test` is every module's unit tests — the Kotlin/JVM modules' `test` and, since the
+      # convention plugins leave one variant's unit tests enabled, exactly one Android test task per
+      # module. `:app:lintDevDebug` carries the others with it because `lint.checkDependencies` is
+      # on. The two `compile*` tasks are the `prod` and `staging` source sets, two files each, which
+      # nothing else here would compile; they cost seconds and stop a flavor going stale between
+      # releases. R8, `prodRelease` and the store artefact belong to the release job below.
+      #
+      # `verifyRoborazziDebug` is in the same invocation rather than a step of its own, and that is
+      # the whole point: a Gradle task runs at most once per invocation, so asking for both means
+      # the Robolectric tests execute once with the capture switched on. As two steps they executed
+      # twice — measured at 913 s and 773 s on this runner, where one pass over :core:ui is 77 s
+      # against 125 s for the pair. The capture still gates: replacing one golden with a different
+      # image fails `testDebugUnitTest` in the combined run, which is what makes this safe.
+      #
+      # A failure writes the actual image and the diff under build/outputs/roborazzi, which the
+      # upload step below collects.
+      - name: Test, lint, assemble and verify the screenshots
+        run: >-
+          ./gradlew test :app:lintDevDebug :app:assembleDevDebug
+          :app:compileProdDebugKotlin :app:compileStagingDebugKotlin
+          ${{ needs.changes.outputs.ui == 'true' && 'verifyRoborazziDebug' || '' }}
+
+      # A signal, not a gate. The tests have already run above, so this only assembles the
+      # report -- on main, where the trend lives.
+      - name: Coverage report
+        if: always() && github.event_name == 'push'
+        run: ./gradlew koverHtmlReport koverXmlReport
+
+      # One line in the job summary, so the number is read where the run is rather than in an
+      # upload artifact. A few lines of Python over Kover's XML rather than an action.
+      - name: Coverage in the summary
+        if: always() && github.event_name == 'push'
+        run: |
+          python3 - <<'PY'
+          import os, xml.etree.ElementTree as ET
+          root = ET.parse("build/reports/kover/report.xml").getroot()
+          line = next(c for c in root.findall("counter") if c.get("type") == "LINE")
+          covered, missed = int(line.get("covered")), int(line.get("missed"))
+          pct = 100 * covered / (covered + missed)
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write(f"Coverage: {pct:.1f}% ({covered}/{missed + covered} lines)\n")
+          print(f"Coverage: {pct:.1f}%")
+          PY
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            **/build/reports/lint-results-*.html
+            **/build/reports/ktlint/**
+            **/build/reports/tests/**
+            **/build/outputs/roborazzi/**
+            build/reports/kover/**
+          if-no-files-found: ignore
+
+  release:
+    # R8 runs nowhere else: the build job assembles `devDebug` only, so a keep rule that goes
+    # missing would show up when someone cuts a release, which is the worst time to find it. Tags
+    # and a weekly run keep that surface honest without slowing every pull request down.
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    permissions:
+      # Creating the release for the tag. Stated here rather than left to the repository default,
+      # which is read-only on a new repository and would fail the last step of a release.
+      contents: write
+    env:
+      # At job level, so the guard on the keystore step can read it — a step's own `env` is not
+      # available to its own `if`.
+      KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+    steps:
+      # A tag publishes a GitHub release, and an AAB signed with an ephemeral CI debug key is
+      # indistinguishable from a real one on the release page — same green tick, same download.
+      # The secrets are optional everywhere else on purpose, so this is the one place that
+      # difference can still be caught, and it is caught before R8 spends ten minutes. It lives
+      # in this job because only this job's `env` carries the secret: in `build` it read an empty
+      # variable, failed every tag, and left this job to publish a debug-signed AAB.
+      - name: A tagged release is signed with the release key
+        if: startsWith(github.ref, 'refs/tags/') && github.event.repository.fork == false
+        run: |
+          test -n "$KEYSTORE_BASE64" || {
+            echo "$GITHUB_REF_NAME would publish an AAB signed with the CI debug key."
+            echo "Set KEYSTORE_BASE64, KEYSTORE_PASSWORD, KEY_ALIAS and KEY_PASSWORD, then"
+            echo "delete the tag and push it again."
+            exit 1
+          }
+
+      - uses: actions/checkout@v4
+        with:
+          # The whole history and its tags: `versionCode` is `git rev-list --count HEAD`, which on
+          # the default shallow clone is 1 — the very number this stopped being. See ProjectConfig.
+          fetch-depth: 0
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Absent on the schedule, on a fork and on a pull request, and that is fine: those builds
+      # exist to keep R8 honest rather than to publish, so they fall back to the debug key and
+      # still assemble. A tag does not get that fallback — the step above refuses it.
+      - name: Write the release keystore
+        if: env.KEYSTORE_BASE64 != ''
+        run: |
+          echo "$KEYSTORE_BASE64" | base64 --decode > release.jks
+          cat > keystore.properties <<PROPERTIES
+          storeFile=$PWD/release.jks
+          storePassword=${{ secrets.KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.KEY_ALIAS }}
+          keyPassword=${{ secrets.KEY_PASSWORD }}
+          PROPERTIES
+
+      - name: Assemble and lint the release build
+        run: ./gradlew bundleProdRelease lintProdRelease
+
+      # The mapping travels with the AAB it belongs to, and it is named for the tag: a
+      # `mapping.txt` on a release page next to three others is a file nobody can match to a
+      # build. A minified stack trace without it is unreadable, and R8 rewrites the names on
+      # every build, so the copy kept here is the only one that ever fits this AAB.
+      - name: Name the R8 mapping after the build
+        run: |
+          mapping=app/build/outputs/mapping/prodRelease/mapping.txt
+          test -f "$mapping" || { echo "R8 wrote no mapping at $mapping"; exit 1; }
+          cp "$mapping" "app/build/outputs/mapping/prodRelease/mapping-${GITHUB_REF_NAME//\//-}.txt"
+
+      - name: Upload the release AAB and its mapping
+        uses: actions/upload-artifact@v4
+        with:
+          name: prod-release
+          path: |
+            app/build/outputs/bundle/prodRelease/*.aab
+            app/build/outputs/mapping/prodRelease/mapping-*.txt
+          if-no-files-found: error
+
+      # Only on a tag: the weekly run of this job exists to keep R8 honest, not to publish. The
+      # notes are GitHub's own, generated from the pull requests since the previous tag.
+      # Re-running the job replaces the AAB rather than failing on the release that the first run
+      # already created.
+      - name: Publish the GitHub release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          assets=(
+            app/build/outputs/bundle/prodRelease/*.aab
+            app/build/outputs/mapping/prodRelease/mapping-*.txt
+          )
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "${assets[@]}" \
+              --title "$GITHUB_REF_NAME" --generate-notes
+          fi
+
+  generators:
+    # `test_scripts.py` checks the text a generator wrote; this compiles it. Text can be correct
+    # and still not compile — an import the template stopped needing, a `:core:ui` signature that
+    # moved — and nobody finds out until they run a generator and get a red project.
+    # Weekly rather than per-pull-request: it is minutes of Gradle to catch a rare regression, and
+    # the ordinary build already compiles `feature/template` itself.
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # Must match gradle/gradle-daemon-jvm.properties, which pins the daemon's JDK.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      - name: Compile what the generators write
+        run: python3 scripts/test_scripts.py --with-gradle
+
+  maestro:
+    # An emulator boot plus five flows is minutes, not seconds, and the flows cover golden paths
+    # rather than each change — so this runs weekly and on demand, not on every pull request.
+    # The schedule finds a broken path within a week; the dispatch is what you run before a release.
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    # An emulator that fails to boot otherwise hangs until the workflow's own six-hour limit.
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      # Must match gradle/gradle-daemon-jvm.properties, which pins the daemon's JDK.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # The hosted runner ships with tooling this job never touches — .NET, CodeQL, the Android
+      # NDK, Haskell — and with two builds plus a system image to download, a run can die with
+      # "No space left on device" before the emulator exists. A plain `rm` rather than a
+      # marketplace action. `df` before and after, so the next time it is tight the number is in
+      # the log.
+      - name: Free the runner's disk
+        run: |
+          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android/sdk/ndk /opt/hostedtoolcache/CodeQL /opt/ghc /usr/local/.ghcup
+          df -h /
+
+      # Built before the emulator starts, so a compile failure does not pay for a boot first.
+      # `dev` serves the catalog from JSON fixtures, which is what every flow's `APP_ID`
+      # defaults to — a flow asserts the app, never the weather at a server. `prodRelease` is the
+      # one build R8 runs on, and until this job installed it nothing ever started it: a keep rule
+      # a library's consumer rules miss — a `@Serializable` route key, a Koin `*Of` constructor —
+      # fails at first launch, not at compile time. The CI debug key signs it, which is fine here:
+      # this run proves the app starts, not who signed it.
+      - name: Assemble the dev debug and prod release builds
+        run: ./gradlew :app:assembleDevDebug :app:assembleProdRelease
+
+      # The vendor's install script. `brew install maestro` gives the desktop app with no
+      # `maestro test`, and there is no first-party action.
+      - name: Install the Maestro CLI
+        run: |
+          curl -fsSL https://get.maestro.mobile.dev | bash
+          echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+
+      # Without this the emulator falls back to software rendering and the flows time out.
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      # One script rather than lines in the action's `script:`: the action runs each line in a
+      # shell of its own, so a variable set on one line is gone on the next — which is how a
+      # first attempt wrote its debug output to `/dev/.maestro`. Environment variables survive,
+      # so `$RUNNER_TEMP` and `$GITHUB_WORKSPACE` do. Both passes run even when the first fails,
+      # and logcat is kept beside Maestro's own output — a failed assertion says what was not on
+      # screen; logcat says why.
+      - name: Write the flow script
+        run: |
+          cat > "$RUNNER_TEMP/flows.sh" <<'EOF'
+          set -u
+          debug="$GITHUB_WORKSPACE/maestro-debug"
+          status=0
+          adb install -r app/build/outputs/apk/dev/debug/app-dev-debug.apk
+          maestro test -e APP_ID=com.example.androidproject1.dev .maestro --debug-output "$debug/dev" || status=$?
+          adb install -r app/build/outputs/apk/prod/release/app-prod-release.apk
+          maestro test -e APP_ID=com.example.androidproject1 .maestro/sign-in.yaml --debug-output "$debug/release" || status=$?
+          adb logcat -d > "$debug/logcat.txt" || true
+          exit "$status"
+          EOF
+
+      # Third-party but build-only: it never reaches the release artifact, and there is no
+      # first-party action that boots an emulator.
+      - name: Run the flows
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          # An emulator that draws nothing is faster and boots more reliably on a CI runner;
+          # Maestro drives it over adb and needs no window.
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          # One variable, two passes: every flow on the dev build, then the sign-in flow on the
+          # release one — auth is in memory (`DefaultAuthService`), so it runs against `prod`
+          # without a backend, and reaching Home is what proves R8 kept enough.
+          script: bash "$RUNNER_TEMP/flows.sh"
+
+      # The recordings and the view hierarchy Maestro dumps on a failed assertion — which is the
+      # only thing that says *why* an id was not found on a machine nobody can look at.
+      - name: Upload the Maestro output
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: maestro-debug
+          path: maestro-debug/**
+          if-no-files-found: ignore

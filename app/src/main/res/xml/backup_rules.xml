@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+   Cloud backup rules for API 30 and below. API 31+ uses data_extraction_rules.xml instead.
+
+   The DataStore file holds the session, so it is excluded: a restore onto a new device must not
+   silently sign the user in. Revisit once you decide what should legitimately survive a restore.
+-->
+<full-backup-content>
+    <exclude
+        domain="file"
+        path="datastore/" />
+</full-backup-content>

@@ -1,0 +1,64 @@
+# Placing an order: the cart through the four checkout steps, a declined card, a good one, the order.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Check out, have a card declined, and place the order
+---
+# Signs in, adds a coffee and stops on the wizard's first step.
+- runFlow: add-to-cart.yaml
+
+# 1 · Address. `dev` opens every checkout on an example address and a Visa test card, so
+# this step only goes on, and the card step changes nothing but the number.
+- assertVisible:
+    id: "checkoutAddress_nameField"
+- scrollUntilVisible:
+    element:
+      id: "checkoutAddress_continueButton"
+- tapOn:
+    id: "checkoutAddress_continueButton"
+
+# 2 · Delivery. The first option is chosen for us.
+- assertVisible:
+    id: "CheckoutDeliveryScreen"
+- tapOn:
+    id: "checkoutDelivery_continueButton"
+
+# 3 · Payment, with the published decline card: the dev fixture answers it with a 402.
+- assertVisible:
+    id: "CheckoutPaymentScreen"
+- tapOn:
+    id: "checkoutPayment_cardNumberField"
+- eraseText
+- inputText: "4000000000000002"
+- tapOn:
+    id: "checkoutPayment_continueButton"
+
+# 4 · Review. An emulator with no screen lock skips the step-up prompt and places at once.
+- assertVisible:
+    id: "CheckoutReviewScreen"
+- tapOn:
+    id: "checkoutReview_placeButton"
+# The decline is the screen's alert, and its one action goes back to the card.
+- assertVisible:
+    id: "alert_dialog"
+- tapOn:
+    id: "alert_confirmButton"
+- assertVisible:
+    id: "CheckoutPaymentScreen"
+
+# The step kept the expiry and the code; only the number changes, to the card the fixture places.
+- tapOn:
+    id: "checkoutPayment_cardNumberField"
+- eraseText
+- inputText: "4242424242424242"
+- tapOn:
+    id: "checkoutPayment_continueButton"
+- assertVisible:
+    id: "CheckoutReviewScreen"
+- tapOn:
+    id: "checkoutReview_placeButton"
+
+# The wizard gives way to the order it placed.
+- assertVisible:
+    id: "OrderDetailScreen"

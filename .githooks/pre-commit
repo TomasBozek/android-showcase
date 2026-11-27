@@ -1,0 +1,15 @@
+#!/bin/sh
+# Committed, not generated: `git config core.hooksPath .githooks` is the whole install, once per
+# clone — see scripts/README.md. Skip once with: git commit --no-verify
+
+root="$(git rev-parse --show-toplevel)"
+
+if ! output="$(python3 "$root/scripts/doctor.py" 2>&1)"; then
+    echo "$output"
+    echo
+    echo "doctor.py failed — commit aborted. Fix the above, or use --no-verify."
+    exit 1
+fi
+
+# doctor.py only: it takes seconds. The test_scripts.py suite takes about fifteen minutes, so CI
+# runs it instead.

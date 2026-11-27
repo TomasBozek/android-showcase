@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="categories_title">Kategorie</string>
+    <plurals name="product_detail_added_to_cart">
+        <item quantity="one">Přidáno do košíku</item>
+        <item quantity="few">Přidány %1$d kusy do košíku</item>
+        <item quantity="many">Přidáno %1$d kusu do košíku</item>
+        <item quantity="other">Přidáno %1$d kusů do košíku</item>
+    </plurals>
+    <string name="product_detail_view_cart">Zobrazit košík</string>
+    <string name="product_detail_not_found">Tento produkt už není dostupný.</string>
+    <string name="product_detail_go_back">Zpět</string>
+    <string name="catalog_stale">Zobrazuje se uložený obsah – server je nedostupný.</string>
+    <string name="products_empty">V této kategorii nejsou žádné produkty.</string>
+    <string name="products_retry">Zkusit znovu</string>
+    <string name="product_detail_favourite_add">Přidat do oblíbených</string>
+    <string name="product_detail_favourite_remove">Odebrat z oblíbených</string>
+    <string name="product_detail_favourite_added">Přidáno do oblíbených</string>
+    <string name="product_detail_favourite_removed">Odebráno z oblíbených</string>
+    <string name="product_detail_favourite_view">Zobrazit</string>
+    <string name="product_detail_add_to_cart">Do košíku</string>
+    <string name="product_picker_title">Vyberte produkt</string>
+    <string name="product_picker_empty_title">Zatím není z čeho vybírat</string>
+    <string name="product_picker_empty_message">Výběr nabízí to, co jste si prohlédli. Otevřete jednou katalog a naplní se.</string>
+    <string name="product_picker_browse">Procházet katalog</string>
+    <string name="product_detail_placeholder_title">Zatím nic nevybráno</string>
+    <string name="product_detail_placeholder_message">Vyberte produkt vlevo a zobrazí se zde.</string>
+    <string name="product_search_title">Vyhledávání</string>
+    <string name="product_search_placeholder">Hledat produkty</string>
+    <string name="product_search_no_results_title">Nic nenalezeno</string>
+    <string name="product_search_no_results_message">Žádný produkt neodpovídá dotazu „%1$s“.</string>
+    <string name="product_search_recents">Poslední hledání</string>
+    <string name="product_search_recents_clear">Vymazat</string>
+    <string name="product_search_recents_empty_title">Hledejte v katalogu</string>
+    <string name="product_search_recents_empty_message">Co budete hledat, objeví se tady, takže příště stačí jedno klepnutí.</string>
+    <string name="categories_search">Hledat</string>
+    <string name="categories_empty_title">Zatím není co procházet</string>
+    <string name="categories_empty_message">Katalog se vrátil prázdný. Přetáhněte dolů nebo to zkuste znovu.</string>
+    <string name="categories_retry">Zkusit znovu</string>
+    <string name="categories_stale">Uložené položky – offline</string>
+    <string name="product_detail_share">Sdílet</string>
+    <string name="categories_favourites_title">Oblíbené</string>
+    <string name="categories_all_title">Kategorie</string>
+    <string name="categories_favourite_remove">Odebrat z oblíbených: %1$s</string>
+    <string name="categories_favourite_removed">Odebráno z oblíbených</string>
+    <string name="categories_favourite_undo">Zpět</string>
+    <string name="catalog_door_title">Katalog</string>
+    <plurals name="catalog_door_count">
+        <item quantity="one">%d kategorie</item>
+        <item quantity="few">%d kategorie</item>
+        <item quantity="many">%d kategorie</item>
+        <item quantity="other">%d kategorií</item>
+    </plurals>
+</resources>

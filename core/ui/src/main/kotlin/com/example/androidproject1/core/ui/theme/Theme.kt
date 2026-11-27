@@ -1,0 +1,143 @@
+package com.example.androidproject1.core.ui.theme
+
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalWindowInfo
+import androidx.compose.ui.semantics.semantics
+import com.example.androidproject1.core.ui.component.navigation.AppScreenChrome
+import com.example.androidproject1.service.core.ui.accessibility.minTouchTarget
+import com.example.androidproject1.service.core.ui.component.LocalScreenChrome
+
+/**
+ * The theme every screen composes inside.
+ *
+ * Three layers, as the design system defines them: [Ramp] and [Scale] hold raw values and are
+ * `internal`; the semantic layer ([AppColors], [AppTypography], [AppShapes], [AppElevation],
+ * [AppMotion], [Spacing]) names roles and is the only layer that differs between light and dark;
+ * a component binds to a role and to its own state.
+ *
+ * There is no dynamic colour. The palette is the product — a screen that takes its colours from the
+ * wallpaper is a screen that never looks like itself, and the status roles stop meaning anything.
+ *
+ * The size class comes from the **window**, not the screen: an app in split screen or in a freeform
+ * window on a desktop is as narrow as its window, and a theme that measured the display would give
+ * it a tablet's typography in a phone-width column.
+ *
+ * @param sizeClass override the class derived from window width; useful in previews and tests.
+ * @param pointer override whether a mouse or trackpad is attached; useful in previews and tests.
+ * @param reducedMotion override the device's "Remove animations" setting; every duration is then
+ *   zero and every reader draws its end state at once. Useful in tests and on the bench.
+ */
+@Composable
+fun AppTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    sizeClass: SizeClass = currentSizeClass(),
+    pointer: Boolean = pointerPresent(),
+    reducedMotion: Boolean = systemReducedMotion(),
+    content: @Composable () -> Unit,
+) {
+    val colors = if (darkTheme) darkAppColors() else lightAppColors()
+    val typography = when (sizeClass) {
+        SizeClass.Compact -> compactTypography()
+        SizeClass.Regular, SizeClass.Expanded -> regularTypography()
+    }
+    val shapes = AppShapes()
+
+    val density = densityFor(sizeClass, pointer)
+    CompositionLocalProvider(
+        LocalAppColors provides colors,
+        LocalAppTypography provides typography,
+        LocalAppShapes provides shapes,
+        LocalAppElevation provides AppElevation(),
+        LocalAppMotion provides if (reducedMotion) AppMotion().reduced() else AppMotion(),
+        LocalAppDensity provides density,
+        LocalAppIcons provides AppIcons(),
+        LocalSpacing provides Spacing(),
+        // What `Screen()` draws its surface, overlay, alert and empty state with. Installed
+        // here so a screen gets it by being a screen, and so `:service:core:ui` never names us.
+        LocalScreenChrome provides AppScreenChrome,
+    ) {
+        MaterialTheme(
+            colorScheme = colors.toColorScheme(),
+            typography = typography.toTypography(),
+            shapes = shapes.toShapes(),
+        ) {
+            // The one node the theme owns: it publishes the touch-target floor into the semantics
+            // tree so `assertAccessible()` holds every screen to the density it drew with.
+            // Min constraints propagate, so the content measures exactly as it did without it.
+            Box(
+                modifier = Modifier.semantics { minTouchTarget = density.minTouchTarget },
+                propagateMinConstraints = true,
+                content = { content() },
+            )
+        }
+    }
+}
+
+/**
+ * The class this window's width falls into.
+ *
+ * `LocalWindowInfo.containerDpSize` is the window, which is what
+ * `material3-adaptive`'s own `currentWindowDpSize()` returns — one line for one line, without the
+ * artifact. Its `currentWindowAdaptiveInfo().windowSizeClass` is the other half of that library and
+ * is not usable here: it quantises to androidx.window's 600 / 840 breakpoints, and this system's
+ * are 720 / 1280 (see [sizeClassFor]).
+ */
+@Composable
+fun currentSizeClass(): SizeClass =
+    sizeClassFor(LocalWindowInfo.current.containerDpSize.width.value.toInt())
+
+/**
+ * This app's design tokens.
+ *
+ * `MaterialTheme.colorScheme` and `MaterialTheme.typography` are populated from the same roles, so
+ * a stock Material component fits without a wrapper — but prefer these: they carry the roles
+ * Material has no slot for, such as an action's edge colour or the status families.
+ */
+object AppTheme {
+
+    val colors: AppColors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppColors.current
+
+    val typography: AppTypography
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppTypography.current
+
+    val shapes: AppShapes
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppShapes.current
+
+    val elevation: AppElevation
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppElevation.current
+
+    val motion: AppMotion
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppMotion.current
+
+    val density: AppDensity
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppDensity.current
+
+    val icons: AppIcons
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalAppIcons.current
+
+    val spacing: Spacing
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalSpacing.current
+}

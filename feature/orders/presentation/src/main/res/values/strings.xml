@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="orders_title">Your orders</string>
+    <string name="orders_item">Order %1$s</string>
+    <string name="orders_item_supporting">%1$s · %2$s</string>
+    <string name="orders_empty_title">No orders yet</string>
+    <string name="orders_empty_message">What you order shows up here, with where it is on its way.</string>
+    <string name="orders_empty_action">Browse the catalog</string>
+    <string name="orders_status_placed">Placed</string>
+    <string name="orders_status_packed">Packed</string>
+    <string name="orders_status_shipped">On its way</string>
+    <string name="orders_status_delivered">Delivered</string>
+    <string name="orders_status_cancelled">Cancelled</string>
+    <string name="order_detail_title">Order %1$s</string>
+    <string name="order_detail_placed_on">Placed on %1$s</string>
+    <string name="order_detail_lines">What you ordered</string>
+    <string name="order_detail_line">%1$d × %2$s</string>
+    <string name="order_detail_address">Delivered to</string>
+    <string name="order_detail_discount">Discount</string>
+    <string name="order_detail_total">Total</string>
+    <string name="orders_door_title">Your orders</string>
+    <plurals name="orders_door_count">
+        <item quantity="one">%d order</item>
+        <item quantity="other">%d orders</item>
+    </plurals>
+    <string name="order_detail_placeholder_title">Pick an order</string>
+    <string name="order_detail_placeholder_message">Its lines and status show here.</string>
+</resources>

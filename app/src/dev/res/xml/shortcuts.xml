@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The launcher's long-press shortcuts: the three create screens, each a deep link
+    that DeepLinks resolves like any other. A shortcut's intent cannot use ${applicationId}, so
+    each flavor carries its own copy of this file with its own scheme — ShortcutsTest
+    holds the copies to one text.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutId="newTrip"
+        android:shortcutLongLabel="@string/shortcut_new_trip_long"
+        android:shortcutShortLabel="@string/shortcut_new_trip">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="com.example.androidproject1.dev://trips/new"
+            android:targetClass="com.example.androidproject1.MainActivity"
+            android:targetPackage="com.example.androidproject1.dev" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutId="newItem"
+        android:shortcutLongLabel="@string/shortcut_new_item_long"
+        android:shortcutShortLabel="@string/shortcut_new_item">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="com.example.androidproject1.dev://inventory/new"
+            android:targetClass="com.example.androidproject1.MainActivity"
+            android:targetPackage="com.example.androidproject1.dev" />
+    </shortcut>
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutId="addPlace"
+        android:shortcutLongLabel="@string/shortcut_add_place_long"
+        android:shortcutShortLabel="@string/shortcut_add_place">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="com.example.androidproject1.dev://weather/search"
+            android:targetClass="com.example.androidproject1.MainActivity"
+            android:targetPackage="com.example.androidproject1.dev" />
+    </shortcut>
+
+</shortcuts>

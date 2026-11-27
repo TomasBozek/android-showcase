@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Czech. Every string here is a contentDescription read aloud by TalkBack, so it names the
+    action rather than the icon.
+-->
+<resources>
+    <string name="app_drag_handle">Změnit pořadí</string>
+    <string name="app_coach_skip">Přeskočit</string>
+    <string name="app_coach_next">Další</string>
+    <string name="app_coach_done">Hotovo</string>
+    <string name="app_dialog_cancel">Zrušit</string>
+    <string name="app_menu_open">Otevřít nabídku</string>
+    <string name="app_navigate_up">Přejít nahoru</string>
+    <string name="app_picker_choose">Vybrat</string>
+    <string name="app_search">Hledat</string>
+    <string name="app_search_clear">Vymazat dotaz</string>
+    <string name="app_stepper_decrement">Snížit počet</string>
+    <string name="app_stepper_increment">Zvýšit počet</string>
+    <string name="app_permission_continue">Pokračovat</string>
+    <string name="app_permission_open_settings">Otevřít nastavení</string>
+    <string name="app_permission_not_now">Teď ne</string>
+    <string name="app_toast_dismiss">Zavřít</string>
+    <string name="app_image_viewer_close">Zavřít</string>
+    <string name="app_card_number">Číslo karty</string>
+    <string name="app_card_number_invalid">Toto číslo karty není platné</string>
+    <string name="app_card_expiry">Platnost do</string>
+    <string name="app_card_expiry_hint">MM/RR</string>
+    <string name="app_card_expiry_invalid">Takový měsíc není</string>
+    <string name="app_card_expiry_past">Platnost karty vypršela</string>
+    <string name="app_card_code">Bezpečnostní kód</string>
+    <string name="app_phone_region">Země</string>
+</resources>

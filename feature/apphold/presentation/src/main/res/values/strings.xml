@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_hold_update_title">Time to update</string>
+    <string name="app_hold_update_body">This version can no longer talk to the server. Update from the store to carry on.</string>
+    <string name="app_hold_update_action">Update</string>
+    <string name="app_hold_maintenance_title">Back soon</string>
+    <string name="app_hold_maintenance_body">The service is down for maintenance. Try again in a little while.</string>
+</resources>

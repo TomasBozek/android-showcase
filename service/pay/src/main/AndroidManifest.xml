@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <!-- Tells Google Pay's own screens that this app can take a payment; without it the sheet
+             does not show. -->
+        <meta-data
+            android:name="com.google.android.gms.wallet.api.enabled"
+            android:value="true" />
+
+        <!-- The host of the Google Pay sheet: its result is an activity result, and
+             `PaymentSheet.pay` is a suspend call with no activity in sight. It draws nothing —
+             translucent, out of Recents, finished the moment it has an answer — and only this app
+             can start it. -->
+        <activity
+            android:name=".PayRequestActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+
+</manifest>

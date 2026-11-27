@@ -1,0 +1,76 @@
+# The tour end to end: offered once after the first sign-in, walked to the end, and gone —
+# then put back from Settings and offered again. What it points at is the real Home, the real menu
+# icon and the real tabs, so every step is an assertion that the element is where the tour says.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: The tour runs once, and comes back when it is asked for
+---
+- clearState
+- launchApp
+
+# Not runFlow: sign-in.yaml — that one skips the tour, which is the thing under test here.
+- assertVisible:
+    id: "OnboardingScreen"
+- tapOn:
+    id: "onboarding_skipButton"
+- tapOn:
+    id: "login_emailField"
+- inputText: "ada@example.com"
+- tapOn:
+    id: "login_passwordField"
+- inputText: "hunter2!!"
+- hideKeyboard
+- tapOn:
+    id: "login_submitButton"
+- assertVisible:
+    id: "HomeScreen"
+
+# Offered without being asked for, on the first Home a signed-in user ever sees.
+- assertVisible:
+    id: "tour_dialog"
+- assertVisible:
+    id: "tour_progress"
+
+# Four steps, each on the frame: Home's doors, the menu icon, the tab bar, the settings tab.
+# The last Next ends it.
+- repeat:
+    times: 4
+    commands:
+      - tapOn:
+          id: "tour_nextButton"
+
+- assertVisible:
+    id: "HomeScreen"
+- assertNotVisible:
+    id: "tour_dialog"
+
+# And it stays gone: a tour offered twice is one people learn to dismiss.
+- tapOn:
+    id: "tabs_settingsTab"
+- tapOn:
+    id: "tabs_homeTab"
+- assertNotVisible:
+    id: "tour_dialog"
+
+# Put back from Settings, which resets the flag rather than opening anything; the tour starts on
+# the next Home, which is where its first step points.
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_tourButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_tourButton"
+- tapOn:
+    id: "tabs_homeTab"
+- assertVisible:
+    id: "tour_dialog"
+
+# Skip ends it too, and marks it seen the same way the last Next does.
+- tapOn:
+    id: "tour_skipButton"
+- assertNotVisible:
+    id: "tour_dialog"

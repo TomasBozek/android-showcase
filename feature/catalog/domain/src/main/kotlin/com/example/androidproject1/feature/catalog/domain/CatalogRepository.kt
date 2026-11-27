@@ -1,0 +1,43 @@
+package com.example.androidproject1.feature.catalog.domain
+
+import com.example.androidproject1.service.core.domain.result.Outcome
+import kotlinx.coroutines.flow.Flow
+
+/**
+ * Implemented in the data layer. Declared here so the domain layer depends on nothing.
+ *
+ * Flows rather than one-shot `suspend` calls, because the catalog is cache-then-network: a
+ * collector sees what was cached, then what the server said, and then any later change. A
+ * `suspend fun` could only return one of those, which is why offline-first cannot be bolted on
+ * afterwards without changing this interface.
+ */
+interface CatalogRepository {
+
+    fun observeCategories(): Flow<Outcome<List<Category>>>
+
+    fun observeProducts(categoryId: String): Flow<Outcome<List<Product>>>
+
+    /** Everything cached, for a picker. Reads the table the lists filled; no fetch of its own. */
+    fun observeAllProducts(): Flow<Outcome<List<Product>>>
+
+    /**
+     * Products whose name contains [query], from the cache the lists filled.
+     *
+     * Matching is the data layer's business rather than a screen's: it is a query, and a
+     * `filter` in a ViewModel is one that cannot be indexed, paged or moved to a server.
+     */
+    fun searchProducts(query: String): Flow<Outcome<List<Product>>>
+
+    /** A single product, read from the cache the lists filled. */
+    suspend fun getProduct(productId: String): Outcome<Product?>
+
+    /**
+     * Fetches the categories again and writes what the server sent; the observers see it through
+     * the cache. What a pull-to-refresh runs — the flows above refresh once, on collection, and a
+     * stale list would otherwise stay stale for as long as the screen lives.
+     */
+    suspend fun refreshCategories(): Outcome<Unit>
+
+    /** [refreshCategories] for one category's products. */
+    suspend fun refreshProducts(categoryId: String): Outcome<Unit>
+}

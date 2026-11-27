@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidProject1</string>
+
+    <string name="tab_home">Domů</string>
+    <string name="tab_catalog">Katalog</string>
+    <string name="tab_cart">Košík</string>
+    <string name="tab_trips">Výlety</string>
+    <string name="tab_settings">Nastavení</string>
+
+    <string name="main_offline">Jste offline</string>
+
+    <string name="menu_section_places">Místa</string>
+    <string name="menu_section_yours">Vaše</string>
+    <string name="menu_section_developer">Vývojář</string>
+
+
+    <string name="debug_notification_title">Test přímého odkazu</string>
+    <string name="debug_notification_text">Klepnutím otevřete produkt po studeném startu.</string>
+    <string name="tour_doors_title">Kam dál</string>
+    <string name="tour_doors_body">Každá karta je jedno místo v aplikaci a řádek pod ní říká, co tam je.</string>
+    <string name="tour_menu_title">Všechno ostatní</string>
+    <string name="tour_menu_body">Všechno, co nemá vlastní záložku, najdete tady.</string>
+    <string name="tour_tabs_title">Záložky</string>
+    <string name="tour_tabs_body">Místa, kam se vracíte, na jedno klepnutí odkudkoli.</string>
+    <string name="tour_settings_title">Nastavení</string>
+    <string name="tour_settings_body">Motiv, jazyk, váš účet — a tahle prohlídka znovu.</string>
+    <string name="menu_tour">Zobrazit prohlídku znovu</string>
+    <string name="main_terms_title">Podmínky se změnily</string>
+    <string name="main_terms_message">Aktualizovali jsme podmínky použití a zásady ochrany osobních údajů. Pro pokračování je přijměte, nebo se odhlaste.</string>
+    <string name="main_terms_accept">Přijmout</string>
+    <string name="main_terms_decline">Odhlásit se</string>
+    <string name="main_message_open">Otevřít</string>
+    <string name="main_message_dismiss">Zavřít</string>
+    <string name="main_update_available">Vyšla novější verze.</string>
+    <string name="main_update_action">Aktualizovat</string>
+    <string name="main_crashed">Aplikace se minule nečekaně ukončila</string>
+    <string name="main_crashed_send">Odeslat hlášení</string>
+    <string name="main_update_ready">Aktualizace je stažená</string>
+    <string name="main_update_restart">Restartovat</string>
+    <string name="shortcut_new_trip">Nový výlet</string>
+    <string name="shortcut_new_trip_long">Naplánovat nový výlet</string>
+    <string name="shortcut_new_item">Nová položka</string>
+    <string name="shortcut_new_item_long">Přidat položku do inventáře</string>
+    <string name="shortcut_add_place">Přidat místo</string>
+    <string name="shortcut_add_place_long">Přidat místo do počasí</string>
+</resources>

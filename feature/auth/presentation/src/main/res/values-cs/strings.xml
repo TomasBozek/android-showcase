@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_title">Přihlášení</string>
+    <string name="login_email">E-mail</string>
+    <string name="login_password">Heslo</string>
+    <string name="login_submit">Přihlásit se</string>
+    <string name="login_skip">Přeskočit přihlášení</string>
+    <string name="login_sign_up">Nemáte účet? Zaregistrujte se</string>
+    <string name="login_or">nebo</string>
+    <string name="sign_up_title">Registrace</string>
+    <string name="sign_up_email">E-mail</string>
+    <string name="sign_up_password">Heslo</string>
+    <string name="sign_up_confirm_password">Potvrzení hesla</string>
+    <string name="sign_up_submit">Zaregistrovat se</string>
+    <string name="sign_up_login">Už máte účet? Přihlaste se</string>
+    <string name="forgot_password_title">Zapomenuté heslo</string>
+    <string name="forgot_password_intro">Zadejte adresu, se kterou jste se registrovali, a pošleme vám odkaz pro nastavení nového hesla.</string>
+    <string name="forgot_password_email">E-mail</string>
+    <string name="forgot_password_submit">Poslat odkaz</string>
+    <string name="forgot_password_sent">Pokud účet používá adresu %1$s, odkaz pro obnovení hesla je na cestě. Zkontrolujte doručenou poštu i složku se spamem.</string>
+    <string name="forgot_password_rate_limited">Před chvílí jste o odkaz už žádali. Počkejte minutu a pošlete ho znovu.</string>
+    <string name="forgot_password_resend">Poslat znovu</string>
+    <string name="login_forgot_password">Zapomenuté heslo?</string>
+    <plurals name="forgot_password_resend_in">
+        <item quantity="one">Poslat znovu za %1$d sekundu</item>
+        <item quantity="few">Poslat znovu za %1$d sekundy</item>
+        <item quantity="many">Poslat znovu za %1$d sekundy</item>
+        <item quantity="other">Poslat znovu za %1$d sekund</item>
+    </plurals>
+    <string name="reset_password_title">Nové heslo</string>
+    <string name="reset_password_intro">Zvolte nové heslo k účtu. Příště se přihlásíte s ním.</string>
+    <string name="reset_password_password">Nové heslo</string>
+    <string name="reset_password_confirm">Nové heslo znovu</string>
+    <string name="reset_password_submit">Nastavit heslo</string>
+    <string name="login_password_reset">Heslo je nastavené. Přihlaste se s ním.</string>
+    <string name="verify_email_title">Zkontrolujte poštu</string>
+    <string name="verify_email_intro">Na adresu %1$s jsme poslali šestimístný kód. Zadejte ho a dokončete vytvoření účtu.</string>
+    <string name="verify_email_code">Kód</string>
+    <string name="verify_email_submit">Ověřit</string>
+    <string name="verify_email_resend">Poslat nový kód</string>
+    <string name="verify_email_code_incomplete">Kód má šest číslic</string>
+    <plurals name="verify_email_resend_in">
+        <item quantity="one">Nový kód za %1$d sekundu</item>
+        <item quantity="few">Nový kód za %1$d sekundy</item>
+        <item quantity="many">Nový kód za %1$d sekundy</item>
+        <item quantity="other">Nový kód za %1$d sekund</item>
+    </plurals>
+    <string name="sign_up_terms">Souhlasím s podmínkami použití a zásadami ochrany osobních údajů</string>
+    <string name="sign_up_terms_link">Podmínky použití</string>
+    <string name="sign_up_privacy_link">Zásady ochrany osobních údajů</string>
+    <string name="sign_up_terms_required">Pro vytvoření účtu je nutný souhlas s podmínkami</string>
+    <string name="app_lock_title">Zamčeno</string>
+    <string name="app_lock_message">Pokračujte, až ověříte, že jste to vy.</string>
+    <string name="app_lock_unlock">Odemknout</string>
+    <string name="app_lock_prompt">Odemknout aplikaci</string>
+</resources>

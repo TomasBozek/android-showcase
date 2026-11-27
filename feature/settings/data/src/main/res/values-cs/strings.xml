@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_storage_download_title">Ukázkový soubor</string>
+    <string name="settings_storage_download_running">Stahuje se…</string>
+    <string name="settings_storage_download_done">Stahování dokončeno</string>
+    <string name="settings_storage_download_failed">Stahování selhalo</string>
+</resources>

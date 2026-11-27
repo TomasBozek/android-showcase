@@ -1,0 +1,96 @@
+# Home is the crossroads: every public door is a card you press, and each opens the place it
+# names. A tab door comes back through the bar; a pushed screen through its own up arrow; Inventory
+# has no arrow, so the system back returns from it.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Home is a door to every place
+---
+- runFlow: sign-in.yaml
+
+# Shop.
+- tapOn:
+    id: "home_catalogCard"
+- assertVisible:
+    id: "CategoriesScreen"
+- tapOn:
+    id: "tabs_homeTab"
+- tapOn:
+    id: "home_cartCard"
+- assertVisible:
+    id: "CartScreen"
+- tapOn:
+    id: "tabs_homeTab"
+
+# Yours.
+- tapOn:
+    id: "home_tripsCard"
+- assertVisible:
+    id: "TripsScreen"
+- tapOn:
+    id: "tabs_homeTab"
+- scrollUntilVisible:
+    element:
+      id: "home_inventoryCard"
+    direction: DOWN
+- tapOn:
+    id: "home_inventoryCard"
+- assertVisible:
+    id: "InventoryScreen"
+- back
+- scrollUntilVisible:
+    element:
+      id: "home_moviesCard"
+    direction: DOWN
+- tapOn:
+    id: "home_moviesCard"
+- assertVisible:
+    id: "MoviesScreen"
+- tapOn:
+    id: "movies_upButton"
+- scrollUntilVisible:
+    element:
+      id: "home_weatherCard"
+    direction: DOWN
+- tapOn:
+    id: "home_weatherCard"
+- assertVisible:
+    id: "WeatherScreen"
+- tapOn:
+    id: "weather_upButton"
+
+# App.
+- scrollUntilVisible:
+    element:
+      id: "home_profileCard"
+    direction: DOWN
+- tapOn:
+    id: "home_profileCard"
+- assertVisible:
+    id: "ProfileScreen"
+- tapOn:
+    id: "profile_upButton"
+- scrollUntilVisible:
+    element:
+      id: "home_settingsCard"
+    direction: DOWN
+- tapOn:
+    id: "home_settingsCard"
+- assertVisible:
+    id: "SettingsScreen"
+
+# The speed dial: the three things the app creates, from the crossroads. A wizard nobody
+# typed into raises no discard alert on the way back.
+- tapOn:
+    id: "tabs_homeTab"
+- tapOn:
+    id: "home_createButton"
+- tapOn:
+    id: "home_newTripItem"
+- assertVisible:
+    id: "TripWizardScreen"
+- tapOn:
+    id: "tripWizard_upButton"
+- assertVisible:
+    id: "HomeScreen"

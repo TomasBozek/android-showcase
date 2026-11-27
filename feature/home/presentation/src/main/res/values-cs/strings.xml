@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Domů</string>
+    <string name="home_greeting">Ahoj, Androide!</string>
+    <string name="home_greeting_named">Ahoj, %1$s!</string>
+    <string name="home_create">Vytvořit</string>
+    <string name="home_section_shop">Obchod</string>
+    <string name="home_section_yours">Vaše</string>
+    <string name="home_section_app">Aplikace</string>
+    <string name="home_section_developer">Vývojář</string>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The core_ prefix is enforced by resourcePrefix in this module's build file. -->
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="core_loading">Loading…</string>
+    <string name="core_action_ok">OK</string>
+    <string name="core_action_cancel">Cancel</string>
+    <string name="core_action_retry">Try again</string>
+    <string name="core_alert_error_title">Something went wrong</string>
+    <string name="core_error_unexpected">Something went wrong. Please try again.</string>
+    <string name="core_error_no_connection">No internet connection. Check your network and try again.</string>
+    <string name="core_error_offline_title">You’re offline</string>
+    <string name="core_error_offline">This will try again as soon as you’re back online.</string>
+    <string name="core_error_server_unavailable">The server is unavailable right now.</string>
+    <string name="core_empty_message">Nothing to show yet.</string>
+
+    <!-- The guard on a form with unsaved input. One wording, so three screens cannot disagree. -->
+    <string name="core_discard_title">Discard your changes?</string>
+    <string name="core_discard_message">What you have typed will not be saved.</string>
+    <!-- For the features that use it; a copy may have none yet. -->
+    <string name="core_draft_restored" tools:ignore="UnusedResources">Draft restored</string>
+    <string name="core_action_discard">Discard</string>
+    <string name="core_action_keep_editing">Keep editing</string>
+
+    <!-- Form validation. Shipped here so a feature's form needs no copy of its own. -->
+    <string name="core_field_required">This field is required.</string>
+    <string name="core_field_email">Enter a valid email address.</string>
+    <string name="core_field_mismatch">These do not match.</string>
+    <plurals name="core_field_min_length">
+        <item quantity="one">Must be at least %d character.</item>
+        <item quantity="other">Must be at least %d characters.</item>
+    </plurals>
+    <string name="core_command_no_app">Nothing on this device can open this.</string>
+    <string name="core_command_copied">Copied</string>
+    <!-- For the features that use it; a copy may have none yet. -->
+    <string name="core_error_session_expired" tools:ignore="UnusedResources">Your session has ended. Sign in again to carry on.</string>
+</resources>

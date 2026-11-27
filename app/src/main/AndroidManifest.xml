@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Asked for from the Permissions screen, not on first launch. The channel it posts to is
+         created in App.onCreate. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- The connectivity banner: ConnectivityManager refuses the active network without it. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="${appLabel}"
+        android:localeConfig="@xml/locales_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AndroidProject1">
+        <!-- WorkManager starts on demand, from `App.workManagerConfiguration`, once Koin can hand
+             it the handlers. Its default initializer would run before `App.onCreate`. -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge">
+            <meta-data
+                android:name="androidx.work.WorkManagerInitializer"
+                android:value="androidx.startup"
+                tools:node="remove" />
+        </provider>
+
+        <!-- Per-app language below API 33: AppCompat stores the chosen locale itself and
+             reads it back before the first frame. On 33+ the platform does both, and the
+             `localeConfig` above is what lists the app in the system's language settings. -->
+        <service
+            android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
+            android:enabled="false"
+            android:exported="false">
+            <meta-data
+                android:name="autoStoreLocales"
+                android:value="true" />
+        </service>
+
+        <!-- `singleTop` because the app is one activity and a deep link that arrives while it is
+             already running must reach `onNewIntent`, not a second copy of it. Without this, the
+             default `standard` mode stacks another MainActivity: the link's whole path is
+             synthesised again and the user needs one back press per level to return to where they
+             were, with the app they left still underneath. -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="${appLabel}"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AndroidProject1.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- `<applicationId>://<door>[/<id>]`, each feature's doors declared in its api module: home, catalog, cart, trips, settings, profile, inventory[/<id>], movies,
+                 movie/<id>, weather[/<id>], product/<id>, category/<id>, search, trip/<id>, orders,
+                 order/<id> and reset/<token>. The scheme is the app's own rather than a
+                 domain, so it needs no assetlinks.json and no site to host one; a real product
+                 would add an `android:autoVerify` https filter beside this, not instead of it.
+                 The applicationId rather than a name of its own, so `init_project.py` has
+                 nothing to rename here and the three flavors get three schemes — a dev link
+                 opens the dev build rather than whichever of them the system picks.
+                 BROWSABLE is what lets the link be followed from another app. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="${applicationId}" />
+            </intent-filter>
+
+            <!-- The launcher's long-press shortcuts to the three create screens. -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity>
+    </application>
+
+</manifest>

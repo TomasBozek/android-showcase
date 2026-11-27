@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Approximate location: a city is enough to name a place, and the network provider that
+         answers it needs nothing more. Asked for from the screen that uses it, through
+         PermissionGate, never on first launch. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- The permission above implies this feature is required, which hides the app from a device
+         with no location hardware. Nothing here needs it: a failed fix is an error a screen shows. -->
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+
+</manifest>

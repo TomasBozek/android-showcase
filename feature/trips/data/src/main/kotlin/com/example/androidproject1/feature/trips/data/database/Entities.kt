@@ -1,0 +1,39 @@
+package com.example.androidproject1.feature.trips.data.database
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.example.androidproject1.feature.trips.domain.TripType
+import java.time.LocalDate
+import java.time.LocalTime
+
+/**
+ * The database's own shape, deliberately not the domain's — see `CategoryEntity` in `:feature:catalog`
+ * for why. [status] is not a column: `Trip.status(today)` derives it from the dates, so it can
+ * never read stale against a clock that keeps moving. [type] and the dates are stored as `TEXT`
+ * through [Converters], so the schema is the one version 1 exported.
+ */
+@Entity(tableName = "trips")
+data class TripEntity(
+    @PrimaryKey val id: String,
+    val name: String,
+    val destinationId: String,
+    val destinationName: String,
+    val type: TripType,
+    val startDate: LocalDate,
+    val endDate: LocalDate,
+    val travelers: Int,
+    val budgetMinMinor: Long,
+    val budgetMaxMinor: Long,
+    val notes: String,
+    /** Version 2's column: `TEXT`, nullable, so a version-1 row reads as "no time set". */
+    val departureTime: LocalTime? = null,
+)
+
+/** Seeded once from `DestinationFixtures` — see `DefaultLocalDestinationsDataSource`. */
+@Entity(tableName = "destinations")
+data class DestinationEntity(
+    @PrimaryKey val id: String,
+    val name: String,
+    val country: String,
+    val description: String,
+)

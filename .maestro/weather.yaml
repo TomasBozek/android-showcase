@@ -1,0 +1,149 @@
+# The weather end to end: a place searched and saved, its forecast on both tabs, and the same
+# forecast again with the server down — the cache, per place, is what answers.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Search a place, read its forecast, and again offline
+---
+- runFlow: sign-in.yaml
+
+# Below the fold since Home has an Orders door.
+- scrollUntilVisible:
+    element:
+      id: "home_weatherCard"
+    direction: DOWN
+- tapOn:
+    id: "home_weatherCard"
+- assertVisible:
+    id: "WeatherScreen"
+
+# Nothing is saved on a fresh install, so the first thing the screen offers is the bundled list
+# — tapped here, which is what a first open actually does before anyone types.
+- tapOn:
+    id: "weather_suggestedItem"
+    index: 0
+- assertVisible:
+    id: "ForecastScreen"
+- tapOn:
+    id: "forecast_upButton"
+
+# Two characters are enough for the geocoder, and `plz` is typed without the háček on purpose:
+# the search folds diacritics, so it finds Plzeň from an ASCII keyboard.
+- tapOn:
+    id: "weather_queryField"
+- inputText: "plz"
+- assertVisible:
+    id: "weather_resultList"
+- tapOn:
+    id: "weather_resultItem"
+    index: 0
+
+- assertVisible:
+    id: "ForecastScreen"
+- assertVisible:
+    id: "forecast_currentCard"
+# When the forecast is from, under the card.
+- assertVisible:
+    id: "forecast_updatedValue"
+# Today opens first, so its line is on screen before any tab is tapped.
+- assertVisible:
+    id: "forecast_todayValue"
+# The tabs carry no id of their own — the group does — so the second is the tab by index.
+- tapOn:
+    id: "forecast_tabs"
+    index: 0
+    point: "75%,50%"
+- assertVisible:
+    id: "forecast_weekValue"
+
+- tapOn:
+    id: "forecast_upButton"
+- assertVisible:
+    id: "weather_placeItem"
+
+# The unit is a display conversion: the segmented control's second option is three
+# quarters along, and the figure on the row is rewritten without asking the host anything.
+- tapOn:
+    id: "weather_unitTab"
+    point: "75%,50%"
+- assertVisible:
+    id: "weather_placeValue"
+    text: ".*°F"
+- tapOn:
+    id: "weather_unitTab"
+    point: "25%,50%"
+
+# The fixture engine's own offline switch: the only "airplane mode" the dev build has.
+- tapOn:
+    id: "weather_upButton"
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_debugMenuButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_debugMenuButton"
+- scrollUntilVisible:
+    element:
+      id: "devMenu_offlineSwitch"
+    direction: DOWN
+- tapOn:
+    id: "devMenu_offlineSwitch"
+- tapOn:
+    id: "devMenu_upButton"
+- tapOn:
+    id: "tabs_homeTab"
+
+# Below the fold since Home has an Orders door.
+- scrollUntilVisible:
+    element:
+      id: "home_weatherCard"
+    direction: DOWN
+- tapOn:
+    id: "home_weatherCard"
+- assertVisible:
+    id: "WeatherScreen"
+- tapOn:
+    id: "weather_placeItem"
+    index: 0
+- assertVisible:
+    id: "ForecastScreen"
+- assertVisible:
+    id: "forecast_currentCard"
+
+# Back on the list, remove both places — the suggestion and Plzeň: a swipe reveals the key, and
+# the key is what removes — never the swipe alone. The list is then empty.
+- tapOn:
+    id: "forecast_upButton"
+- repeat:
+    times: 2
+    commands:
+      - swipe:
+          from:
+            id: "weather_placeItem"
+            index: 0
+          direction: LEFT
+      - tapOn:
+          id: "weather_placeRemoveButton"
+- assertVisible:
+    id: "weather_empty"
+
+# Leave the engine as it was found, so the next flow starts online.
+- tapOn:
+    id: "weather_upButton"
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_debugMenuButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_debugMenuButton"
+- scrollUntilVisible:
+    element:
+      id: "devMenu_offlineSwitch"
+    direction: DOWN
+- tapOn:
+    id: "devMenu_offlineSwitch"

@@ -1,0 +1,46 @@
+# The gallery shows the system's roots and hands a component to the bench.
+#
+# Foundations is the first group, so the colours page is reachable without scrolling — which is the
+# point of the enum's order. The theme strip and the bench link are the detail screen's two new
+# controls; the strip is asserted by its group's id, never by the label on an option, because that
+# label is copy and is translated.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml. The gallery is behind the debug
+  # menu, so it exists in dev and staging and not in a release build.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: The gallery shows a foundation page and opens a component on the bench
+---
+- runFlow: sign-in.yaml
+
+# The roots, before the leaves.
+- tapOn:
+    id: "menu_openButton"
+- tapOn:
+    id: "menu_galleryItem"
+- assertVisible:
+    id: "GalleryScreen"
+- tapOn:
+    id: "gallery_item_colours"
+- assertVisible:
+    id: "GalleryDetailScreen"
+- assertVisible:
+    id: "galleryDetail_themeTab"
+- assertVisible:
+    id: "galleryDetail_variantItem"
+- tapOn:
+    id: "galleryDetail_upButton"
+
+# A component, and the bench it opens on.
+- scrollUntilVisible:
+    element:
+      id: "gallery_item_switch"
+    direction: DOWN
+- tapOn:
+    id: "gallery_item_switch"
+- assertVisible:
+    id: "GalleryDetailScreen"
+- tapOn:
+    id: "galleryDetail_playgroundButton"
+- assertVisible:
+    id: "DevMenuPlaygroundScreen"

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gallery_title">Komponenty</string>
+    <string name="gallery_detail_theme_system">Systém</string>
+    <string name="gallery_detail_theme_light">Světlý</string>
+    <string name="gallery_detail_theme_dark">Tmavý</string>
+    <string name="gallery_detail_playground">Otevřít na ponku</string>
+    <string name="gallery_door_title">Galerie komponent</string>
+</resources>

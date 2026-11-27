@@ -1,0 +1,47 @@
+# The cart round trip: add from a product, see the badge, check out behind a confirmation.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Add a product to the cart and check out
+---
+# sign-in.yaml clears the state first, so the picker below has nothing cached to offer.
+- runFlow: sign-in.yaml
+
+# A cleared app's picker says so, and its action leads to the catalog that fills it.
+- tapOn:
+    id: "tabs_cartTab"
+- tapOn:
+    id: "cart_addItemButton"
+- assertVisible:
+    id: "productPicker_empty"
+- tapOn:
+    id: "productPicker_browseButton"
+- assertVisible:
+    id: "CategoriesScreen"
+
+- tapOn:
+    id: "categories_item_beverages"
+- tapOn:
+    id: "products_item_coffee"
+# Add to cart asks how many first: the sheet opens on one, and confirm is what adds.
+- tapOn:
+    id: "productDetail_addToCartButton"
+- assertVisible:
+    id: "productDetail_quantitySheet"
+- tapOn:
+    id: "productDetail_confirmButton"
+
+- tapOn:
+
+    id: "tabs_cartTab"
+- assertVisible:
+    id: "cart_itemList"
+# The count is a plural, so this is also the assertion that the right form was picked.
+- assertVisible: "1 item"
+
+- tapOn:
+    id: "cart_checkoutButton"
+# Checkout is a wizard of its own, and the cart keeps its lines until an order is placed.
+- assertVisible:
+    id: "CheckoutAddressScreen"

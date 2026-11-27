@@ -1,0 +1,74 @@
+package com.example.androidproject1.feature.catalog.di
+
+import androidx.room.Room
+import com.example.androidproject1.core.ui.shell.ShellDoor
+import com.example.androidproject1.core.ui.shell.ShellJump
+import com.example.androidproject1.feature.catalog.data.database.CatalogDatabase
+import com.example.androidproject1.feature.catalog.data.repository.DefaultCatalogEraser
+import com.example.androidproject1.feature.catalog.data.repository.DefaultCatalogRepository
+import com.example.androidproject1.feature.catalog.data.repository.DefaultFavouritesRepository
+import com.example.androidproject1.feature.catalog.data.repository.DefaultRecentSearchesRepository
+import com.example.androidproject1.feature.catalog.data.source.DefaultLocalCatalogDataSource
+import com.example.androidproject1.feature.catalog.data.source.DefaultLocalFavouritesDataSource
+import com.example.androidproject1.feature.catalog.data.source.DefaultLocalRecentSearchesDataSource
+import com.example.androidproject1.feature.catalog.data.source.DefaultRemoteCatalogDataSource
+import com.example.androidproject1.feature.catalog.data.source.LocalCatalogDataSource
+import com.example.androidproject1.feature.catalog.data.source.LocalFavouritesDataSource
+import com.example.androidproject1.feature.catalog.data.source.LocalRecentSearchesDataSource
+import com.example.androidproject1.feature.catalog.data.source.RemoteCatalogDataSource
+import com.example.androidproject1.feature.catalog.domain.CatalogRepository
+import com.example.androidproject1.feature.catalog.domain.FavouritesRepository
+import com.example.androidproject1.feature.catalog.domain.RecentSearchesRepository
+import com.example.androidproject1.feature.catalog.presentation.catalogDoor
+import com.example.androidproject1.feature.catalog.presentation.catalogJumps
+import com.example.androidproject1.feature.catalog.presentation.categories.CategoriesViewModel
+import com.example.androidproject1.feature.catalog.presentation.productdetail.ProductDetailViewModel
+import com.example.androidproject1.feature.catalog.presentation.productpicker.ProductPickerViewModel
+import com.example.androidproject1.feature.catalog.presentation.products.ProductsViewModel
+import com.example.androidproject1.feature.catalog.presentation.search.ProductSearchViewModel
+import com.example.androidproject1.service.core.domain.LocalDataEraser
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.module.Module
+import org.koin.core.module.dsl.singleOf
+import org.koin.core.module.dsl.viewModelOf
+import org.koin.core.qualifier.named
+import org.koin.dsl.bind
+import org.koin.dsl.module
+
+object CatalogModule {
+
+    val module: Module = module {
+        // Its door in the shell: Home, the drawer and Profile read every door with getAll().
+        single<ShellDoor>(named("door:catalog")) { catalogDoor(get()) }
+        // The screens the debug menu jumps to; read with getAll() where its modules are bound.
+        catalogJumps.forEach { jump -> single<ShellJump>(named("jump:${jump.id}")) { jump } }
+        viewModelOf(::CategoriesViewModel)
+        viewModelOf(::ProductsViewModel)
+        viewModelOf(::ProductDetailViewModel)
+        viewModelOf(::ProductPickerViewModel)
+        viewModelOf(::ProductSearchViewModel)
+
+        single {
+            Room.databaseBuilder(
+                androidContext(),
+                CatalogDatabase::class.java,
+                CatalogDatabase.NAME,
+            ).addMigrations(*CatalogDatabase.MIGRATIONS)
+                .build()
+        }
+        single { get<CatalogDatabase>().catalogDao() }
+        single { get<CatalogDatabase>().favouritesDao() }
+
+        singleOf(::DefaultCatalogRepository) bind CatalogRepository::class
+        singleOf(::DefaultFavouritesRepository) bind FavouritesRepository::class
+        // Spelled out, like the cart's: the data source has a defaulted clock for the fetch
+        // markers, and reflection would try to resolve the `() -> Long` from the graph.
+        single<LocalCatalogDataSource> { DefaultLocalCatalogDataSource(catalogDao = get()) }
+        singleOf(::DefaultRemoteCatalogDataSource) bind RemoteCatalogDataSource::class
+        singleOf(::DefaultRecentSearchesRepository) bind RecentSearchesRepository::class
+        singleOf(::DefaultLocalRecentSearchesDataSource) bind LocalRecentSearchesDataSource::class
+        single<LocalFavouritesDataSource> { DefaultLocalFavouritesDataSource(favouritesDao = get()) }
+        // What "delete my account" wipes here; the auth feature collects every one with getAll().
+        singleOf(::DefaultCatalogEraser) bind LocalDataEraser::class
+    }
+}

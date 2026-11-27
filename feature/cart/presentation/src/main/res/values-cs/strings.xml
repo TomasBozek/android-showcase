@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Czech. cart_item_count is the plurals feat.9 exists to prove: one / few / many / other,
+    where English has two forms and Czech four.
+-->
+<resources>
+    <string name="cart_title">Košík</string>
+    <string name="cart_empty_title">Váš košík je prázdný</string>
+    <string name="cart_empty_message">Přidejte něco z katalogu a objeví se to tady.</string>
+    <string name="cart_add_item">Přidat položku</string>
+    <string name="cart_checkout">K pokladně</string>
+    <string name="cart_total">Celkem</string>
+    <string name="cart_remove">Odebrat z košíku: %1$s</string>
+    <string name="cart_removed">Odebráno z košíku</string>
+    <string name="cart_undo">Zpět</string>
+    <plurals name="cart_item_count">
+        <item quantity="one">%d položka</item>
+        <item quantity="few">%d položky</item>
+        <item quantity="many">%d položky</item>
+        <item quantity="other">%d položek</item>
+    </plurals>
+    <string name="cart_door_title">Košík</string>
+    <plurals name="cart_door_count">
+        <item quantity="one">%d položka</item>
+        <item quantity="few">%d položky</item>
+        <item quantity="many">%d položky</item>
+        <item quantity="other">%d položek</item>
+    </plurals>
+</resources>

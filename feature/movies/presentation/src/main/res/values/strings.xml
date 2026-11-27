@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movies_title">TV shows</string>
+    <string name="movies_empty_title">No shows</string>
+    <string name="movies_empty_message">Nothing came back. Pull down to try again.</string>
+    <string name="movies_page_error">Could not load more shows.</string>
+    <string name="movies_retry">Try again</string>
+    <string name="movies_error_title">Could not load the shows</string>
+    <string name="movies_error_message">Check your connection and try again.</string>
+    <string name="movies_stale">Showing what was loaded last time.</string>
+    <string name="movie_detail_released">Released</string>
+    <string name="movie_detail_runtime">Runtime</string>
+    <string name="movie_detail_rating">Rating</string>
+    <string name="movies_favourites">Favourites</string>
+    <string name="movies_action_open">Open</string>
+    <string name="movies_action_favourite">Add to favourites</string>
+    <string name="movies_favourite_added">Added to favourites</string>
+    <string name="movie_favourites_title">Favourite shows</string>
+    <string name="movie_favourites_empty_title">No favourites yet</string>
+    <string name="movie_favourites_empty_message">Tap the heart on a show to keep it here.</string>
+    <string name="movie_detail_favourite_added">Added to your favourites</string>
+    <string name="movie_detail_favourite_removed">Removed from your favourites</string>
+    <string name="movie_detail_favourite_view">View</string>
+    <string name="movie_favourites_remove">Remove from favourites</string>
+    <string name="movie_detail_favourite_add">Add to favourites</string>
+    <string name="movie_detail_favourite_remove">Remove from favourites</string>
+    <string name="movie_detail_poster_open">Open the poster</string>
+    <string name="movies_last_updated">Updated %1$s</string>
+    <plurals name="movies_refresh_failed_minutes">
+        <item quantity="one">Could not refresh. These are from %d minute ago.</item>
+        <item quantity="other">Could not refresh. These are from %d minutes ago.</item>
+    </plurals>
+    <plurals name="movies_refresh_failed_hours">
+        <item quantity="one">Could not refresh. These are from %d hour ago.</item>
+        <item quantity="other">Could not refresh. These are from %d hours ago.</item>
+    </plurals>
+    <plurals name="movies_refresh_failed_days">
+        <item quantity="one">Could not refresh. These are from %d day ago.</item>
+        <item quantity="other">Could not refresh. These are from %d days ago.</item>
+    </plurals>
+    <string name="movies_door_title">Shows</string>
+    <plurals name="movies_door_count">
+        <item quantity="one">%d favourite</item>
+        <item quantity="other">%d favourites</item>
+    </plurals>
+    <string name="movie_detail_placeholder_title">Pick a show</string>
+    <string name="movie_detail_placeholder_message">Its details show here.</string>
+</resources>

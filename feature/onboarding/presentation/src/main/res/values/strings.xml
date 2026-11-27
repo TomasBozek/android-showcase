@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_page_browse_title">More than a shop</string>
+    <string name="onboarding_page_browse_body">Buy things, plan a trip, keep an inventory, watch the weather — Home is the crossroads.</string>
+    <string name="onboarding_page_cart_title">Five tabs and a menu</string>
+    <string name="onboarding_page_cart_body">The bar at the bottom holds the five you use most. Everything else is behind the menu icon.</string>
+    <string name="onboarding_page_account_title">Your account</string>
+    <string name="onboarding_page_account_body">Sign in to keep your profile, and change how the app looks in Settings.</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_start">Get started</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_whats_new_title">What\'s new</string>
+    <string name="onboarding_whats_new_body">Forgot your password? There is a way back now. Sign-up checks your e-mail with a code, About shows which version you have, and you can share a product, add a trip to your calendar or copy your address in one tap.</string>
+    <string name="onboarding_whats_new_done">Got it</string>
+</resources>

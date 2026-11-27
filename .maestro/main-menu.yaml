@@ -1,0 +1,40 @@
+# The main menu: every place is a row in the drawer, opened from the menu icon a tab root
+# draws in the arrow's place. A pushed screen keeps its arrow — the drawer opens there by edge
+# swipe, which this flow does not exercise.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: The main menu reaches a tab, a screen with no tab, and back to a tab
+---
+- runFlow: sign-in.yaml
+
+# A tab through the menu.
+- tapOn:
+    id: "menu_openButton"
+- assertVisible:
+    id: "menu_list"
+- tapOn:
+    id: "menu_tripsItem"
+- assertVisible:
+    id: "TripsScreen"
+
+# A screen with no tab: pushed, so it has an up arrow and no menu icon.
+- tapOn:
+    id: "menu_openButton"
+- tapOn:
+    id: "menu_profileItem"
+- assertVisible:
+    id: "ProfileScreen"
+- assertNotVisible:
+    id: "menu_openButton"
+- tapOn:
+    id: "profile_upButton"
+
+# Back on a tab root, the icon is there again; the badge's tab through the menu.
+- tapOn:
+    id: "menu_openButton"
+- tapOn:
+    id: "menu_cartItem"
+- assertVisible:
+    id: "CartScreen"

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="categories_title">Categories</string>
+    <plurals name="product_detail_added_to_cart">
+        <item quantity="one">Added to your cart</item>
+        <item quantity="other">Added %1$d to your cart</item>
+    </plurals>
+    <string name="product_detail_view_cart">View cart</string>
+    <string name="product_detail_not_found">This product is no longer available.</string>
+    <string name="product_detail_go_back">Go back</string>
+    <string name="catalog_stale">Showing saved items — could not reach the server.</string>
+    <string name="products_empty">No products in this category.</string>
+    <string name="products_retry">Try again</string>
+    <string name="product_detail_favourite_add">Add to favourites</string>
+    <string name="product_detail_favourite_remove">Remove from favourites</string>
+    <string name="product_detail_favourite_added">Added to your favourites</string>
+    <string name="product_detail_favourite_removed">Removed from your favourites</string>
+    <string name="product_detail_favourite_view">View</string>
+    <string name="product_detail_add_to_cart">Add to cart</string>
+    <string name="product_picker_title">Pick a product</string>
+    <string name="product_picker_empty_title">Nothing to pick from yet</string>
+    <string name="product_picker_empty_message">The picker offers what you have browsed. Open the catalogue once and it fills up.</string>
+    <string name="product_picker_browse">Browse the catalogue</string>
+    <string name="product_detail_placeholder_title">Nothing picked yet</string>
+    <string name="product_detail_placeholder_message">Choose a product on the left to see it here.</string>
+    <string name="product_search_title">Search</string>
+    <string name="product_search_placeholder">Search products</string>
+    <string name="product_search_no_results_title">Nothing matched</string>
+    <string name="product_search_no_results_message">No product matches “%1$s”.</string>
+    <string name="product_search_recents">Recent searches</string>
+    <string name="product_search_recents_clear">Clear</string>
+    <string name="product_search_recents_empty_title">Search the catalogue</string>
+    <string name="product_search_recents_empty_message">What you look for shows up here, so it is one tap next time.</string>
+    <string name="categories_search">Search</string>
+    <string name="categories_empty_title">Nothing to browse yet</string>
+    <string name="categories_empty_message">The catalogue came back empty. Pull down, or try again.</string>
+    <string name="categories_retry">Try again</string>
+    <string name="categories_stale">Showing saved items — offline</string>
+    <string name="product_detail_share">Share</string>
+    <string name="categories_favourites_title">Favourites</string>
+    <string name="categories_all_title">Categories</string>
+    <string name="categories_favourite_remove">Remove %1$s from favourites</string>
+    <string name="categories_favourite_removed">Removed from favourites</string>
+    <string name="categories_favourite_undo">Undo</string>
+    <string name="catalog_door_title">Catalog</string>
+    <plurals name="catalog_door_count">
+        <item quantity="one">%d category</item>
+        <item quantity="other">%d categories</item>
+    </plurals>
+</resources>

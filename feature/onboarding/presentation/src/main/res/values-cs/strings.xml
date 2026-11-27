@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_page_browse_title">Víc než obchod</string>
+    <string name="onboarding_page_browse_body">Nakupujte, plánujte cesty, veďte si inventář, sledujte počasí — domovská obrazovka je rozcestník.</string>
+    <string name="onboarding_page_cart_title">Pět záložek a menu</string>
+    <string name="onboarding_page_cart_body">Dole je pět nejpoužívanějších. Všechno ostatní je schované pod ikonou menu.</string>
+    <string name="onboarding_page_account_title">Váš účet</string>
+    <string name="onboarding_page_account_body">Přihlaste se, ať si uchováte profil, a v nastavení změňte vzhled aplikace.</string>
+    <string name="onboarding_next">Další</string>
+    <string name="onboarding_start">Začít</string>
+    <string name="onboarding_skip">Přeskočit</string>
+    <string name="onboarding_whats_new_title">Co je nového</string>
+    <string name="onboarding_whats_new_body">Zapomenuté heslo? Teď už se dá obnovit. Registrace ověří e-mail kódem, stránka O aplikaci ukáže verzi a produkt sdílíte, výlet přidáte do kalendáře nebo adresu zkopírujete jedním klepnutím.</string>
+    <string name="onboarding_whats_new_done">Rozumím</string>
+</resources>

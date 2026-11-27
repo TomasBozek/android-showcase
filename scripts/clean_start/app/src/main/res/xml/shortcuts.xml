@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The launcher's long-press shortcuts, each a deep link that DeepLinks resolves like any other.
+    A shortcut's intent cannot use ${applicationId}, so each flavor carries its own copy of this
+    file with its own scheme. `prod` has none yet.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android" />

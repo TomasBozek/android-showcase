@@ -1,0 +1,22 @@
+package com.example.androidproject1.feature.catalog.presentation.productpicker
+
+/** One-off navigation intents. Turned into back-stack calls in `AppNavHost`. */
+sealed interface ProductPickerNavigation {
+
+    /**
+     * The user chose [productId]; hand it back to whoever asked and close.
+     *
+     * The picker does not know who asked — the requester\'s key came in as a route argument — which
+     * is what lets one picker serve the cart today and anything else tomorrow.
+     */
+    data class Picked(val productId: String) : ProductPickerNavigation
+
+    /** Left without picking. The requester gets no result, which is the answer. */
+    data object NavigateUp : ProductPickerNavigation
+
+    /**
+     * Left for the catalog tab, to fill the cache the picker reads. The requester gets no result
+     * either; what the picker cannot know is where the catalog lives, so `AppNavHost` decides.
+     */
+    data object OpenCatalog : ProductPickerNavigation
+}

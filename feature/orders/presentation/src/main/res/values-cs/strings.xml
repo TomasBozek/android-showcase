@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="orders_title">Vaše objednávky</string>
+    <string name="orders_item">Objednávka %1$s</string>
+    <string name="orders_item_supporting">%1$s · %2$s</string>
+    <string name="orders_empty_title">Zatím žádné objednávky</string>
+    <string name="orders_empty_message">Co objednáte, uvidíte tady, i s tím, kde to právě je.</string>
+    <string name="orders_empty_action">Projít katalog</string>
+    <string name="orders_status_placed">Přijato</string>
+    <string name="orders_status_packed">Zabaleno</string>
+    <string name="orders_status_shipped">Na cestě</string>
+    <string name="orders_status_delivered">Doručeno</string>
+    <string name="orders_status_cancelled">Zrušeno</string>
+    <string name="order_detail_title">Objednávka %1$s</string>
+    <string name="order_detail_placed_on">Objednáno %1$s</string>
+    <string name="order_detail_lines">Co jste objednali</string>
+    <string name="order_detail_line">%1$d × %2$s</string>
+    <string name="order_detail_address">Doručeno na</string>
+    <string name="order_detail_discount">Sleva</string>
+    <string name="order_detail_total">Celkem</string>
+    <string name="orders_door_title">Vaše objednávky</string>
+    <plurals name="orders_door_count">
+        <item quantity="one">%d objednávka</item>
+        <item quantity="few">%d objednávky</item>
+        <item quantity="many">%d objednávky</item>
+        <item quantity="other">%d objednávek</item>
+    </plurals>
+    <string name="order_detail_placeholder_title">Vyberte objednávku</string>
+    <string name="order_detail_placeholder_message">Její položky a stav se zobrazí tady.</string>
+</resources>

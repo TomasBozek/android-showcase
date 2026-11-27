@@ -1,0 +1,68 @@
+# Deleting the account ends the session over a clean device: the server is asked first, every
+# feature wipes its share, and the session goes last — so what was hearted before is gone after.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Delete account returns to Login over a clean device
+---
+- runFlow: sign-in.yaml
+
+# Leave something behind to be wiped: a favourite, which the catalog shows.
+- tapOn:
+    id: "tabs_catalogTab"
+- tapOn:
+    id: "categories_item_beverages"
+- tapOn:
+    id: "products_item_coffee"
+- tapOn:
+    id: "productDetail_favouriteButton"
+
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_dangerZoneGroup"
+    direction: DOWN
+- tapOn:
+    id: "settings_dangerZoneGroup"
+- scrollUntilVisible:
+    element:
+      id: "settings_deleteAccountButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_deleteAccountButton"
+
+# Confirm-then-act, by id: the row and the dialog's button share a label.
+- assertVisible:
+    id: "alert_dialog"
+- tapOn:
+    id: "alert_confirmButton"
+
+- assertVisible:
+    id: "LoginScreen"
+
+# Signing in again finds nothing kept: no favourite in the catalog, an empty cart. Not sign-in.yaml,
+# which starts with clearState and would prove nothing about the wipe.
+- tapOn:
+    id: "login_emailField"
+- inputText: "ada@example.com"
+- tapOn:
+    id: "login_passwordField"
+- inputText: "hunter2!!"
+- hideKeyboard
+- tapOn:
+    id: "login_submitButton"
+- assertVisible:
+    id: "HomeScreen"
+# The favourites are a section above the categories, drawn only when there are some.
+- tapOn:
+    id: "tabs_catalogTab"
+- assertVisible:
+    id: "CategoriesScreen"
+- assertNotVisible:
+    id: "categories_favouriteRemoveButton"
+- tapOn:
+    id: "tabs_cartTab"
+- assertVisible:
+    id: "cart_empty"

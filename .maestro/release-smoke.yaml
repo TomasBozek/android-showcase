@@ -1,0 +1,61 @@
+# The release smoke: a minified build walked once before the tag. R8 and resource
+# shrinking run on no build a task tests, and both have shipped breakages only a release build
+# shows — a keep rule missing at first launch, the licences screen's resources shrunk away.
+# So every tab is opened, and About's open-source licences.
+#
+# Run before a release against `devRelease` — the dev flavor, so it signs in on the fixtures,
+# minified as `prodRelease` is:
+#
+#   ./gradlew installDevRelease && maestro test .maestro/release-smoke.yaml
+#
+# It also runs with the rest on `devDebug`, where it passes for the same reasons and proves less.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: A release build opens every tab and the open-source licences
+---
+- runFlow: sign-in.yaml
+
+- tapOn:
+    id: "tabs_catalogTab"
+- assertVisible:
+    id: "CategoriesScreen"
+- tapOn:
+    id: "tabs_cartTab"
+- assertVisible:
+    id: "CartScreen"
+- tapOn:
+    id: "tabs_tripsTab"
+- assertVisible:
+    id: "TripsScreen"
+- tapOn:
+    id: "tabs_settingsTab"
+- assertVisible:
+    id: "SettingsScreen"
+- tapOn:
+    id: "tabs_homeTab"
+- assertVisible:
+    id: "HomeScreen"
+
+# About → Open-source licences: Play services' own screen, whose list is the resource shrinking
+# took away once. Its ids are the library's.
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_aboutButton"
+- tapOn:
+    id: "settings_aboutButton"
+- assertVisible:
+    id: "AboutScreen"
+- scrollUntilVisible:
+    element:
+      id: "about_licencesButton"
+- tapOn:
+    id: "about_licencesButton"
+- assertVisible:
+    id: "license_list"
+- back
+- assertVisible:
+    id: "AboutScreen"

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_title">Weather</string>
+    <string name="weather_my_location">My location</string>
+    <string name="weather_use_my_location">Use my location</string>
+    <string name="weather_locating">Finding where you are…</string>
+    <string name="weather_my_location_failed">Could not find where you are. Check that location is on and try again.</string>
+    <string name="weather_my_location_rationale_title">Your location</string>
+    <string name="weather_my_location_rationale_message">Allow approximate location to show the weather where you are. It is read once, when you tap the button, and never in the background.</string>
+    <string name="weather_my_location_settings">Open settings</string>
+    <string name="weather_search_placeholder">Search for a place</string>
+    <string name="weather_empty_title">No places yet</string>
+    <string name="weather_empty_message">Search for a town above and tap it to keep it here.</string>
+    <string name="weather_remove">Remove %1$s</string>
+    <string name="weather_results_empty_title">Nothing matched</string>
+    <string name="weather_results_empty_message">No place is called “%1$s”. Try fewer letters, or another spelling.</string>
+    <string name="weather_searching">Searching</string>
+    <string name="weather_selected_count">%1$d selected</string>
+    <string name="weather_select_all">Select all</string>
+    <string name="weather_remove_selected">Remove the selected places</string>
+    <string name="weather_selection_clear">Leave selection</string>
+    <string name="weather_remove_selected_message">They come off this list. The forecasts go with them.</string>
+    <string name="weather_remove_selected_confirm">Remove</string>
+    <string name="weather_remove_selected_cancel">Keep them</string>
+    <string name="weather_removed_undo">Undo</string>
+    <string name="weather_suggested_title">Or pick one of these</string>
+    <string name="weather_unit_celsius">°C</string>
+    <string name="weather_unit_fahrenheit">°F</string>
+    <string name="forecast_stale">From %1$s — pull to refresh</string>
+    <string name="forecast_save">Save</string>
+    <string name="forecast_unknown_place">That place is not one the app knows</string>
+    <string name="forecast_updated_at">Updated at %1$s</string>
+    <string name="forecast_today_line">Hourly temperature over the next day, with rain probability</string>
+    <string name="forecast_week_line">Daily highs and lows from %1$d to %2$d degrees over the week</string>
+    <string name="forecast_tab_today">Today</string>
+    <string name="forecast_tab_week">Week</string>
+    <string name="forecast_wind_at">Wind %1$s km/h · at %2$s</string>
+    <string name="forecast_rain_chance">Rain %1$s</string>
+    <string name="forecast_precipitation">%1$s mm</string>
+    <string name="forecast_code_clear">Clear</string>
+    <string name="forecast_code_cloudy">Cloudy</string>
+    <string name="forecast_code_fog">Fog</string>
+    <string name="forecast_code_drizzle">Drizzle</string>
+    <string name="forecast_code_rain">Rain</string>
+    <string name="forecast_code_snow">Snow</string>
+    <string name="forecast_code_showers">Showers</string>
+    <string name="forecast_code_thunder">Thunder</string>
+    <plurals name="weather_remove_selected_title">
+        <item quantity="one">Remove %d place?</item>
+        <item quantity="other">Remove %d places?</item>
+    </plurals>
+    <plurals name="weather_removed">
+        <item quantity="one">%d place removed</item>
+        <item quantity="other">%d places removed</item>
+    </plurals>
+    <string name="weather_create_title">Add a place</string>
+    <string name="weather_door_title">Weather</string>
+    <plurals name="weather_door_count">
+        <item quantity="one">%d place kept</item>
+        <item quantity="other">%d places kept</item>
+    </plurals>
+    <string name="forecast_placeholder_title">Pick a place</string>
+    <string name="forecast_placeholder_message">Its forecast shows here.</string>
+</resources>

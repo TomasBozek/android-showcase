@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Approximate location, for "Use my location". Declared where it is used, and never
+         asked for at start: the weather screen asks when the button is first tapped. The
+         location service declares it too; the merge makes them one. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+</manifest>

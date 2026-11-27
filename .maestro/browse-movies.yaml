@@ -1,0 +1,42 @@
+# The movies list pages as it scrolls, and a row opens its detail. Every step is an id: the
+# fixture's titles are never tapped.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Browse the movies to a detail
+---
+- runFlow: sign-in.yaml
+
+# Below the fold since Home has an Orders door.
+- scrollUntilVisible:
+    element:
+      id: "home_moviesCard"
+    direction: DOWN
+- tapOn:
+    id: "home_moviesCard"
+- assertVisible:
+    id: "MoviesScreen"
+- assertVisible:
+    id: "movies_list"
+
+# Page 1 is twenty-five rows (TVmaze's fixture) and a screen shows about a dozen: the scroll runs past the end of page 1
+# into page 2, which the fixture answers, and stops on page 2's first row — the one row that is
+# on screen only when paging worked (27 is the fixture's twenty-sixth show). A tap by id
+# finds what is composed, never what is scrolled away, so the row tapped is the one scrolled to.
+- scrollUntilVisible:
+    element:
+      id: "movies_item_27"
+    direction: DOWN
+    timeout: 20000
+- tapOn:
+    id: "movies_item_27"
+- assertVisible:
+    id: "MovieDetailScreen"
+- assertVisible:
+    id: "movieDetail_factsList"
+
+- tapOn:
+    id: "movieDetail_upButton"
+- assertVisible:
+    id: "MoviesScreen"

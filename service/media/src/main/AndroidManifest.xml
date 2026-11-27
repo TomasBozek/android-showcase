@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <!-- The host of the photo picker and the camera: an activity result needs an activity
+             to register with, and `ImagePicker.pick` is a suspend call with none in sight. It draws
+             nothing — translucent, out of Recents, finished the moment it has an answer — and only
+             this app can start it. -->
+        <activity
+            android:name=".ImageRequestActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+    </application>
+
+</manifest>

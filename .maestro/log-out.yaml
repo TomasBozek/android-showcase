@@ -1,0 +1,37 @@
+# Signing out returns to the auth flow, which has no tabs.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Log out returns to Login
+---
+- runFlow: sign-in.yaml
+
+- tapOn:
+
+    id: "tabs_settingsTab"
+- assertVisible:
+    id: "SettingsScreen"
+# The danger zone is folded by default: one tap to see the row, a dialog to act on it.
+- scrollUntilVisible:
+    element:
+      id: "settings_dangerZoneGroup"
+    direction: DOWN
+- tapOn:
+    id: "settings_dangerZoneGroup"
+- scrollUntilVisible:
+    element:
+      id: "settings_logoutButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_logoutButton"
+
+# Confirm-then-act, so the dialog is the point rather than something to tap through. By id, not by
+# text: the screen's own button says "Log out" too, and matching on the word taps the wrong one.
+- assertVisible:
+    id: "alert_dialog"
+- tapOn:
+    id: "alert_confirmButton"
+
+- assertVisible:
+    id: "LoginScreen"

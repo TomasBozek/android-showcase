@@ -1,0 +1,266 @@
+package com.example.androidproject1.core.ui.component.field
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsFocusedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text.selection.TextSelectionColors
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.autofill.ContentType
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.semantics.clearAndSetSemantics
+import androidx.compose.ui.semantics.contentType
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.text
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
+import com.example.androidproject1.core.ui.common.ComponentPreview
+import com.example.androidproject1.core.ui.common.ThemedComponentPreview
+import com.example.androidproject1.core.ui.component.ControlSize
+import com.example.androidproject1.core.ui.component.content.AppText
+import com.example.androidproject1.core.ui.component.content.TextRole
+import com.example.androidproject1.core.ui.component.height
+import com.example.androidproject1.core.ui.theme.AppTheme
+
+/**
+ * A sunken field: the ground it sits on is lower than the surface around it, which is the whole
+ * signal that it takes input.
+ *
+ * The four states are rest, focus, error and disabled. Focus is a ring in `colors.focusRing` and is
+ * never suppressed — a tablet with a keyboard is driven from it as much as from the glass. **An error always
+ * carries [errorText]**, never colour alone: red on its own is invisible to a good share of the
+ * people using it.
+ *
+ * Set [numeric] for money and quantities; it asks for the number keyboard and turns on tabular
+ * figures, so digits stop shifting under the caret. [password] masks the value and asks for the
+ * password keyboard; [keyboardType] overrides the choice when neither fits, as an email does.
+ *
+ * [suffix] is the unit a number is in — `kg`, `%`, `Kc`. It is drawn inside the field rather than
+ * after it, so the unit travels with the value and cannot be read as the label of the next field,
+ * and it is never part of [value]: what the caller gets back is the number alone.
+ *
+ * Set [frame] to `false` for a field inside an [AppFieldGroup], which draws the frame for the whole
+ * group. A framed field inside a framed group is a box in a box.
+ *
+ * **A field in a form says what comes next.** [imeAction] is what the keyboard's action key does —
+ * `ImeAction.Next` on every field but the last, `ImeAction.Done` on the last — and [onImeAction] is
+ * what pressing it runs when it is `Done` or `Send`; `Next` moves the focus on its own. Leaving
+ * both at their defaults gives every field of a three-field form the same key, which is what a form
+ * that cannot be filled in from the keyboard looks like.
+ *
+ * **[contentType] is what lets a password manager fill it.** Without it the platform has no idea
+ * what a field holds, so a saved sign-in is never offered — the single most common thing an
+ * Android form gets wrong, and one line to fix. `ContentType.Username`, `ContentType.Password`,
+ * `ContentType.NewPassword`, `ContentType.EmailAddress` and friends.
+ *
+ * [visualTransformation] draws the value differently from how it is kept — a card number grouped
+ * in fours, a phone number formatted for its region — and replaces [password]'s mask when set.
+ * [leading] is drawn inside the frame before the value — the country a phone number is dialled
+ * in — so it reads as part of the value rather than as a field of its own.
+ */
+@Composable
+fun AppTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    label: String? = null,
+    placeholder: String? = null,
+    helperText: String? = null,
+    errorText: String? = null,
+    enabled: Boolean = true,
+    numeric: Boolean = false,
+    keyboardType: KeyboardType? = null,
+    password: Boolean = false,
+    suffix: String? = null,
+    size: ControlSize = ControlSize.Medium,
+    frame: Boolean = true,
+    imeAction: ImeAction = ImeAction.Default,
+    onImeAction: (() -> Unit)? = null,
+    contentType: ContentType? = null,
+    visualTransformation: VisualTransformation? = null,
+    leading: (@Composable () -> Unit)? = null,
+) {
+    val colors = AppTheme.colors
+    val interaction = remember { MutableInteractionSource() }
+    val focused by interaction.collectIsFocusedAsState()
+    val isError = errorText != null
+
+    val borderColor = when {
+        !enabled -> colors.border
+        isError -> colors.destructive.bg
+        focused -> colors.focusRing
+        else -> colors.borderStrong
+    }
+    val textColor = if (enabled) colors.textPrimary else colors.textDisabled
+
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(AppTheme.spacing.stack.xs),
+    ) {
+        if (label != null) {
+            // Drawn for the eye only. The same string is on the input's own semantics node below,
+            // so leaving this one readable would have a screen reader announce the label twice.
+            AppText(
+                text = label,
+                role = TextRole.Label,
+                color = colors.textSecondary,
+                modifier = Modifier.clearAndSetSemantics { },
+            )
+        }
+
+        val ring = if (focused || isError) 3.dp else 1.dp
+        CompositionLocalProvider(
+            LocalTextSelectionColors provides TextSelectionColors(
+                handleColor = colors.focusRing,
+                backgroundColor = colors.focusRing.copy(alpha = 0.28f),
+            ),
+        ) {
+            BasicTextField(
+                value = value,
+                onValueChange = onValueChange,
+                enabled = enabled,
+                singleLine = true,
+                interactionSource = interaction,
+                visualTransformation = visualTransformation ?: if (password) {
+                    PasswordVisualTransformation()
+                } else {
+                    VisualTransformation.None
+                },
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = keyboardType ?: when {
+                        password -> KeyboardType.Password
+                        numeric -> KeyboardType.Number
+                        else -> KeyboardType.Text
+                    },
+                    imeAction = imeAction,
+                ),
+                // One handler on all three: which key the keyboard shows is `imeAction`'s business,
+                // and a caller that set `Send` should not have to know which callback it lands in.
+                keyboardActions = KeyboardActions(
+                    onDone = onImeAction?.let { { it() } },
+                    onGo = onImeAction?.let { { it() } },
+                    onSend = onImeAction?.let { { it() } },
+                ),
+                textStyle = (if (numeric) AppTheme.typography.numericMd else AppTheme.typography.bodyMd)
+                    .copy(color = textColor),
+                cursorBrush = SolidColor(colors.focusRing),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .defaultMinSize(minHeight = size.height)
+                    .then(
+                        // Declared on the node, so the platform's autofill service knows what this
+                        // field holds and a saved sign-in is offered.
+                        if (contentType != null) {
+                            Modifier.semantics { this.contentType = contentType }
+                        } else {
+                            Modifier
+                        },
+                    )
+                    .then(
+                        if (frame) {
+                            Modifier
+                                .clip(AppTheme.shapes.md)
+                                .background(
+                                    if (enabled) colors.surfaceSunken else colors.surfaceBase,
+                                )
+                                .border(ring, borderColor, AppTheme.shapes.md)
+                        } else {
+                            Modifier
+                        },
+                    )
+                    // The label belongs to the input, not to a sibling above it: a `Text` beside
+                    // the field is a separate node, so a screen reader reaching the input read out
+                    // an unnamed edit box. `text` rather than `contentDescription` because the
+                    // value lives in `editableText` and the two do not collide.
+                    .semantics { if (label != null) text = AnnotatedString(label) },
+                decorationBox = { inner ->
+                    // The inset is the decoration's, not the modifier's: a padding on the field
+                    // itself shrinks the input's own pointer and semantics bounds to the text line,
+                    // 35 dp inside a 48 dp frame — the frame is what a thumb aims at.
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        // A leading control is a touch target of its own, as tall as the frame, so it
+                        // takes the vertical inset's place rather than adding to it.
+                        modifier = Modifier.padding(
+                            horizontal = AppTheme.spacing.inset.md,
+                            vertical = if (leading != null) 0.dp else 10.dp,
+                        ),
+                    ) {
+                        if (leading != null) {
+                            Box(modifier = Modifier.padding(end = AppTheme.spacing.inline.sm)) { leading() }
+                        }
+                        Box(modifier = Modifier.weight(1f)) {
+                            if (value.isEmpty() && placeholder != null) {
+                                AppText(text = placeholder, role = TextRole.Secondary)
+                            }
+                            inner()
+                        }
+                        if (suffix != null) {
+                            AppText(
+                                text = suffix,
+                                role = TextRole.Label,
+                                color = colors.textSecondary,
+                                modifier = Modifier.padding(start = AppTheme.spacing.inline.sm),
+                            )
+                        }
+                    }
+                },
+            )
+        }
+
+        val supporting = errorText ?: helperText
+        if (supporting != null) {
+            AppText(
+                text = supporting,
+                role = TextRole.Label,
+                color = if (isError) colors.destructive.bg else colors.textSecondary,
+            )
+        }
+    }
+}
+
+@ComponentPreview
+@Composable
+private fun Preview() = ThemedComponentPreview {
+    AppTextField(value = "", onValueChange = {}, label = "Search", placeholder = "Product name")
+    AppTextField(value = "Pilsner", onValueChange = {}, label = "Item", helperText = "From the catalogue")
+    AppTextField(value = "12", onValueChange = {}, label = "Quantity", numeric = true)
+    AppTextField(
+        value = "abc",
+        onValueChange = {},
+        label = "Code",
+        errorText = "No product with this code",
+    )
+    AppTextField(value = "Locked", onValueChange = {}, label = "Username", enabled = false)
+    AppTextField(value = "hunter2", onValueChange = {}, label = "Password", password = true)
+    AppTextField(
+        value = "0,420",
+        onValueChange = {},
+        label = "Weight",
+        numeric = true,
+        suffix = "kg",
+    )
+    AppTextField(value = "Small", onValueChange = {}, size = ControlSize.Small)
+    AppTextField(value = "Large", onValueChange = {}, size = ControlSize.Large)
+}

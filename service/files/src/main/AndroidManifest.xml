@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+
+        <!-- The one FileProvider: a camera app cannot write to a File and a mail app cannot
+             read one, so both are handed a content:// URI this app has granted them. ${applicationId}
+             rather than a literal, so the dev, staging and prod builds — whose ids differ by a
+             suffix — do not fight over one authority when installed side by side. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

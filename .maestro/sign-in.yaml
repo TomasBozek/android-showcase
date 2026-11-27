@@ -1,0 +1,43 @@
+# Signing in and landing on Home. The one flow every other flow depends on.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Sign in reaches Home
+---
+- clearState
+- launchApp
+
+# The tour first. `SessionState.Onboarding` outranks the other two by design — someone who has not
+# finished it is shown it whether or not a session is stored — so a cleared app opens here and not
+# on Login. Every other flow runs this one, so asserting LoginScreen straight after clearState is
+# what broke all five.
+- assertVisible:
+    id: "OnboardingScreen"
+- tapOn:
+    id: "onboarding_skipButton"
+
+- assertVisible:
+    id: "LoginScreen"
+
+# Found by id, never by text: copy gets reworded and translated, and a flow that breaks on a
+# wording fix is a flow people learn to ignore.
+- tapOn:
+    id: "login_emailField"
+- inputText: "ada@example.com"
+- tapOn:
+    id: "login_passwordField"
+- inputText: "hunter2!!"
+- hideKeyboard
+- tapOn:
+    id: "login_submitButton"
+
+- assertVisible:
+    id: "HomeScreen"
+
+# The tour auto-runs once after the first sign-in, and every other flow reaches Home
+# through this one — so it is dismissed here, optionally, because a run that has already seen it
+# lands on a Home with no coach mark on it.
+- tapOn:
+    id: "tour_skipButton"
+    optional: true

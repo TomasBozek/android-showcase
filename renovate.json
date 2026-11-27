@@ -1,0 +1,25 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard"
+  ],
+  "//": "Every version in this repo lives in gradle/libs.versions.toml; doctor.py fails on a coordinate written anywhere else, so the version catalog manager is the only one that has anything to do. One pull request a week, every update in it: one CI run and one review rather than twenty.",
+  "timezone": "Europe/Prague",
+  "schedule": ["before 6am on monday"],
+  "gradle": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "description": "Every dependency in one pull request. A bump that breaks the build is held back in that pull request, not split into a group of its own.",
+      "matchPackageNames": ["*"],
+      "groupName": "all dependencies"
+    },
+    {
+      "description": "A template should start on stable. Pre-release versions are opened only when the catalog already holds one.",
+      "matchCurrentVersion": "!/-(alpha|beta|rc|RC|Beta)/",
+      "ignoreUnstable": true
+    }
+  ]
+}

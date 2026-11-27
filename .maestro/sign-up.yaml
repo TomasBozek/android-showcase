@@ -1,0 +1,57 @@
+# Signing up, entering the mailed code and landing on Home. The session exists only
+# after the code: sign-up alone leaves the app on the code screen, signed out.
+appId: ${APP_ID}
+env:
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Sign up verifies the e-mail and reaches Home
+---
+- clearState
+- launchApp
+
+- assertVisible:
+    id: "OnboardingScreen"
+- tapOn:
+    id: "onboarding_skipButton"
+
+- assertVisible:
+    id: "LoginScreen"
+- tapOn:
+    id: "login_signUpButton"
+
+- assertVisible:
+    id: "SignUpScreen"
+- tapOn:
+    id: "signUp_emailField"
+- inputText: "grace@example.com"
+- tapOn:
+    id: "signUp_passwordField"
+- inputText: "hunter2!!"
+- tapOn:
+    id: "signUp_confirmPasswordField"
+- inputText: "hunter2!!"
+- hideKeyboard
+# No account without consent.
+- scrollUntilVisible:
+    element:
+      id: "signUp_termsCheckbox"
+- tapOn:
+    id: "signUp_termsCheckbox"
+- tapOn:
+    id: "signUp_submitButton"
+
+# No session yet: the code screen, not Home.
+- assertVisible:
+    id: "VerifyEmailScreen"
+- tapOn:
+    id: "verifyEmail_codeField"
+# The one code the dev fixture accepts.
+- inputText: "000000"
+- hideKeyboard
+- tapOn:
+    id: "verifyEmail_submitButton"
+
+- assertVisible:
+    id: "HomeScreen"
+- tapOn:
+    id: "tour_skipButton"
+    optional: true

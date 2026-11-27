@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gallery_title">Components</string>
+    <string name="gallery_detail_theme_system">System</string>
+    <string name="gallery_detail_theme_light">Light</string>
+    <string name="gallery_detail_theme_dark">Dark</string>
+    <string name="gallery_detail_playground">Open on the bench</string>
+    <string name="gallery_door_title">Component gallery</string>
+</resources>

@@ -1,0 +1,36 @@
+# The tab reaches the feature. Five trips screens once shipped with nothing that opened them —
+# this flow is what stops that happening again.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Open Trips from the bottom bar
+---
+- runFlow: sign-in.yaml
+
+- tapOn:
+    id: "tabs_tripsTab"
+- assertVisible:
+    id: "TripsScreen"
+
+# "View all" is the only route to the list, and it needs no trip in the database: the list has an
+# empty state of its own. The screens past it do, so the flow stops there.
+- tapOn:
+    id: "trips_viewAllButton"
+- assertVisible:
+    id: "TripsListScreen"
+- tapOn:
+    id: "tripsList_upButton"
+- assertVisible:
+    id: "TripsScreen"
+
+# TripsScreen is the only trips screen with no up arrow, so it is the only one a tab can reach and
+# the only one that was stranded — which is what leaving and coming back proves.
+- tapOn:
+    id: "tabs_homeTab"
+- assertVisible:
+    id: "HomeScreen"
+- tapOn:
+    id: "tabs_tripsTab"
+- assertVisible:
+    id: "TripsScreen"

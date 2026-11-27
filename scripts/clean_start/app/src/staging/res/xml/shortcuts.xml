@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    The launcher's long-press shortcuts, each a deep link that DeepLinks resolves like any other.
+    A shortcut's intent cannot use ${applicationId}, so each flavor carries its own copy of this
+    file with its own scheme. The debug menu is reached from here.
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutId="devMenu"
+        android:shortcutLongLabel="@string/shortcut_dev_menu_long"
+        android:shortcutShortLabel="@string/shortcut_dev_menu">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="com.example.androidproject1.staging://devmenu"
+            android:targetClass="com.example.androidproject1.MainActivity"
+            android:targetPackage="com.example.androidproject1.staging" />
+    </shortcut>
+</shortcuts>

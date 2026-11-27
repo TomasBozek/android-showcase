@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile_title">Profile</string>
+    <string name="profile_name">Name</string>
+    <string name="profile_email">E-mail</string>
+    <string name="profile_save">Save</string>
+    <string name="profile_saved">Profile saved</string>
+    <string name="profile_avatar">Profile picture</string>
+    <!-- Stands in for the initials while there is no name to take them from. -->
+    <string name="profile_avatar_unnamed">?</string>
+    <string name="profile_choose_photo">Choose photo</string>
+    <string name="profile_take_photo">Take photo</string>
+    <string name="profile_capture">Open camera</string>
+    <string name="profile_saving_photo">Saving photo…</string>
+    <string name="profile_camera_rationale_title">Camera access</string>
+    <string name="profile_camera_rationale_message">Allow the camera to take a new profile picture. Choosing one from your photos needs no permission.</string>
+    <string name="profile_door_title">Profile</string>
+    <string name="profile_door_empty">No details yet</string>
+    <string name="avatar_crop_title">Your picture</string>
+    <string name="avatar_crop_hint">Drag and pinch until the square holds what you want to show.</string>
+    <string name="avatar_crop_cancel">Cancel</string>
+    <string name="avatar_crop_done">Use this</string>
+    <string name="profile_upload_progress">Uploading picture</string>
+    <string name="profile_upload_retry">Picture not uploaded · Retry</string>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trip_reminder_title">%1$s starts tomorrow</string>
+    <string name="trip_reminder_text">Time to pack for %1$s.</string>
+    <string name="trip_reminder_open">Open trip</string>
+</resources>

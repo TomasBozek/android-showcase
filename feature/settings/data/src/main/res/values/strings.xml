@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_storage_download_title">Sample file</string>
+    <string name="settings_storage_download_running">Downloading…</string>
+    <string name="settings_storage_download_done">Download complete</string>
+    <string name="settings_storage_download_failed">Download failed</string>
+</resources>

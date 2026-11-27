@@ -1,0 +1,89 @@
+# A detail opened once opens again with the server down: the page and the detail are read from
+# the cache, and the failed refresh is a snackbar beside the list rather than an error page.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: A cached movie opens while the server is down
+---
+- runFlow: sign-in.yaml
+
+# Below the fold since Home has an Orders door.
+- scrollUntilVisible:
+    element:
+      id: "home_moviesCard"
+    direction: DOWN
+- tapOn:
+    id: "home_moviesCard"
+- assertVisible:
+    id: "MoviesScreen"
+- tapOn:
+    id: "movies_item_1"
+- assertVisible:
+    id: "MovieDetailScreen"
+- tapOn:
+    id: "movieDetail_upButton"
+- tapOn:
+    id: "movies_upButton"
+- assertVisible:
+    id: "HomeScreen"
+
+# The fixture engine's own offline switch: the only "airplane mode" the dev build has.
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_debugMenuButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_debugMenuButton"
+- assertVisible:
+    id: "DevMenuScreen"
+- scrollUntilVisible:
+    element:
+      id: "devMenu_offlineSwitch"
+    direction: DOWN
+- tapOn:
+    id: "devMenu_offlineSwitch"
+- tapOn:
+    id: "devMenu_upButton"
+- tapOn:
+    id: "tabs_homeTab"
+
+# Below the fold since Home has an Orders door.
+- scrollUntilVisible:
+    element:
+      id: "home_moviesCard"
+    direction: DOWN
+- tapOn:
+    id: "home_moviesCard"
+- assertVisible:
+    id: "MoviesScreen"
+- assertVisible:
+    id: "movies_list"
+- tapOn:
+    id: "movies_item_1"
+- assertVisible:
+    id: "MovieDetailScreen"
+- assertVisible:
+    id: "movieDetail_factsList"
+
+# Leave the engine as it was found, so the next flow starts online.
+- tapOn:
+    id: "movieDetail_upButton"
+- tapOn:
+    id: "movies_upButton"
+- tapOn:
+    id: "tabs_settingsTab"
+- scrollUntilVisible:
+    element:
+      id: "settings_debugMenuButton"
+    direction: DOWN
+- tapOn:
+    id: "settings_debugMenuButton"
+- scrollUntilVisible:
+    element:
+      id: "devMenu_offlineSwitch"
+    direction: DOWN
+- tapOn:
+    id: "devMenu_offlineSwitch"

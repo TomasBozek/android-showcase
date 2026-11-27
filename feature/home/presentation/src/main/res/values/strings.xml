@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Home</string>
+    <string name="home_greeting">Hello, Android!</string>
+    <string name="home_greeting_named">Hello, %1$s!</string>
+    <string name="home_create">Create</string>
+    <string name="home_section_shop">Shop</string>
+    <string name="home_section_yours">Yours</string>
+    <string name="home_section_app">App</string>
+    <string name="home_section_developer">Developer</string>
+</resources>

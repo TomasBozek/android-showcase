@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Trips (dashboard) -->
+    <string name="trips_title">Trips</string>
+    <string name="trips_section_header">Your trips</string>
+    <string name="trips_view_all">View all</string>
+    <string name="trips_count_label">Trips planned</string>
+    <string name="trips_countdown_label">Getting close</string>
+    <string name="trips_open_next_trip">Open</string>
+    <string name="trips_empty_title">No trips yet</string>
+    <string name="trips_empty_message">Trips you plan will show up here.</string>
+    <string name="trips_new_trip">New trip</string>
+
+    <!-- Shared status -->
+    <string name="trips_status_upcoming">Upcoming</string>
+    <string name="trips_status_active">Active</string>
+    <string name="trips_status_completed">Completed</string>
+
+    <!-- TripsList -->
+    <string name="trips_list_title">All trips</string>
+    <string name="trips_list_new_trip">New trip</string>
+    <string name="trips_list_empty_title">No trips yet</string>
+    <string name="trips_list_empty">Trips you plan will show up here. Start one with the button below.</string>
+
+    <!-- TripWizard -->
+    <string name="trip_wizard_title">Plan a trip</string>
+    <string name="trip_wizard_step_label">Step %1$d of %2$d</string>
+    <string name="trip_wizard_name_label">Trip name</string>
+    <string name="trip_wizard_type_leisure">Leisure</string>
+    <string name="trip_wizard_type_business">Business</string>
+    <string name="trip_wizard_type_family">Family</string>
+    <string name="trip_wizard_start_date_label">Start date</string>
+    <string name="trip_wizard_end_date_label">End date</string>
+    <string name="trip_wizard_advanced_label">Advanced</string>
+    <string name="trip_wizard_notes_label">Notes</string>
+    <string name="trip_wizard_departure_time_label">Departure time</string>
+    <string name="trip_wizard_no_destination">No destination chosen yet.</string>
+    <string name="trip_wizard_choose_destination">Choose destination</string>
+    <string name="trip_wizard_change_destination">Change destination</string>
+    <string name="trip_wizard_budget_label">Budget</string>
+    <string name="trip_wizard_budget_tooltip">A range, not a total — the trip may cost less.</string>
+    <string name="trip_wizard_next">Next</string>
+    <string name="trip_wizard_save">Save trip</string>
+    <string name="trip_wizard_start_date_required">Choose a start date.</string>
+    <string name="trip_wizard_end_date_required">Choose an end date.</string>
+    <string name="trip_wizard_end_before_start">The end date is before the start date.</string>
+    <string name="trip_wizard_destination_required">Choose a destination.</string>
+
+    <!-- TripDetail -->
+    <string name="trip_detail_title">Trip</string>
+    <string name="trip_detail_menu">More actions</string>
+    <string name="trip_detail_delete_title">Delete this trip?</string>
+    <string name="trip_detail_delete_message">This cannot be undone.</string>
+    <string name="trip_detail_delete_confirm">Delete trip</string>
+    <string name="trip_detail_delete_cancel">Cancel</string>
+    <string name="trip_detail_tab_itinerary">Itinerary</string>
+    <string name="trip_detail_tab_notes">Notes</string>
+    <string name="trip_detail_tab_budget">Budget</string>
+    <string name="trip_detail_no_notes">No notes for this trip yet.</string>
+    <string name="trip_detail_itinerary_label">Itinerary</string>
+    <string name="trip_detail_destination_label">Destination</string>
+    <string name="trip_detail_dates_label">Dates</string>
+    <string name="trip_detail_travelers_label">Travelers</string>
+    <string name="trip_detail_departure_time">Departure</string>
+
+    <!-- DestinationPicker -->
+    <string name="destination_picker_title">Choose a destination</string>
+    <string name="trip_detail_reminder">Remind me the evening before</string>
+    <string name="trip_detail_reminder_supporting">A notification at 18:00 the day before the trip starts.</string>
+    <string name="trip_detail_map">Show on a map</string>
+    <string name="trip_detail_calendar">Add to calendar</string>
+    <string name="trips_create_title">New trip</string>
+    <string name="trips_door_title">Trips</string>
+    <plurals name="trips_door_count">
+        <item quantity="one">%d trip planned</item>
+        <item quantity="other">%d trips planned</item>
+    </plurals>
+    <string name="trip_detail_placeholder_title">Pick a trip</string>
+    <string name="trip_detail_placeholder_message">Its plan shows here.</string>
+</resources>

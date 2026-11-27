@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroidProject1</string>
+
+    <string name="main_offline">Jste offline</string>
+
+    <string name="debug_notification_title">Test přímého odkazu</string>
+    <string name="debug_notification_text">Klepnutím otevřete vývojářské menu po studeném startu.</string>
+    <string name="main_message_open">Otevřít</string>
+    <string name="main_message_dismiss">Zavřít</string>
+    <string name="main_update_available">Vyšla novější verze.</string>
+    <string name="main_update_action">Aktualizovat</string>
+    <string name="main_crashed">Aplikace se minule nečekaně ukončila</string>
+    <string name="main_crashed_send">Odeslat hlášení</string>
+    <string name="main_update_ready">Aktualizace je stažená</string>
+    <string name="main_update_restart">Restartovat</string>
+    <string name="shortcut_dev_menu">Vývojářské menu</string>
+    <string name="shortcut_dev_menu_long">Otevřít vývojářské menu</string>
+</resources>

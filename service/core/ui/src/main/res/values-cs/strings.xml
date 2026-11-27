@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Czech. These ship to every app built on this template, so they stay generic — no shop
+    vocabulary. core_field_min_length carries all four Czech plural forms; `many` is the
+    decimal one („1,5 znaku“) and the one a hand-written translation forgets.
+-->
+<resources>
+    <string name="core_loading">Načítání…</string>
+    <string name="core_action_ok">OK</string>
+    <string name="core_action_cancel">Zrušit</string>
+    <string name="core_action_retry">Zkusit znovu</string>
+    <string name="core_alert_error_title">Něco se pokazilo</string>
+    <string name="core_error_unexpected">Něco se pokazilo. Zkuste to prosím znovu.</string>
+    <string name="core_error_no_connection">Bez připojení k internetu. Zkontrolujte síť a zkuste to znovu.</string>
+    <string name="core_error_offline_title">Jste offline</string>
+    <string name="core_error_offline">Zkusíme to znovu, jakmile budete zase online.</string>
+    <string name="core_error_server_unavailable">Server je momentálně nedostupný.</string>
+    <string name="core_empty_message">Zatím tu nic není.</string>
+
+    <string name="core_field_required">Toto pole je povinné.</string>
+    <string name="core_field_email">Zadejte platnou e-mailovou adresu.</string>
+    <string name="core_field_mismatch">Neshodují se.</string>
+    <plurals name="core_field_min_length">
+        <item quantity="one">Musí mít alespoň %d znak.</item>
+        <item quantity="few">Musí mít alespoň %d znaky.</item>
+        <item quantity="many">Musí mít alespoň %d znaku.</item>
+        <item quantity="other">Musí mít alespoň %d znaků.</item>
+    </plurals>
+    <!-- The guard on a form with unsaved input. -->
+    <string name="core_discard_title">Zahodit změny?</string>
+    <string name="core_discard_message">Co jste napsali, se neuloží.</string>
+    <string name="core_draft_restored">Koncept obnoven</string>
+    <string name="core_action_discard">Zahodit</string>
+    <string name="core_action_keep_editing">Pokračovat v úpravách</string>
+
+    <string name="core_command_no_app">V tomto zařízení to nic neotevře.</string>
+    <string name="core_command_copied">Zkopírováno</string>
+    <string name="core_error_session_expired">Relace vypršela. Pro pokračování se znovu přihlaste.</string>
+</resources>

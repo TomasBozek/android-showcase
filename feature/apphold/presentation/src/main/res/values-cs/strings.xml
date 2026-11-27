@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_hold_update_title">Je čas aktualizovat</string>
+    <string name="app_hold_update_body">Tato verze se už se serverem nedomluví. Pokračujte po aktualizaci z obchodu.</string>
+    <string name="app_hold_update_action">Aktualizovat</string>
+    <string name="app_hold_maintenance_title">Brzy zpět</string>
+    <string name="app_hold_maintenance_body">Služba má údržbu. Zkuste to prosím za chvíli.</string>
+</resources>

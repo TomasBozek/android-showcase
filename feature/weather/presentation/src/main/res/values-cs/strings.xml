@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="weather_title">Počasí</string>
+    <string name="weather_my_location">Moje poloha</string>
+    <string name="weather_use_my_location">Použít moji polohu</string>
+    <string name="weather_locating">Zjišťuji, kde jste…</string>
+    <string name="weather_my_location_failed">Nepodařilo se zjistit, kde jste. Zkontrolujte, že je poloha zapnutá, a zkuste to znovu.</string>
+    <string name="weather_my_location_rationale_title">Vaše poloha</string>
+    <string name="weather_my_location_rationale_message">Povolte přibližnou polohu, aby se zobrazilo počasí tam, kde jste. Čte se jednou, po klepnutí na tlačítko, a nikdy na pozadí.</string>
+    <string name="weather_my_location_settings">Otevřít nastavení</string>
+    <string name="weather_search_placeholder">Hledat místo</string>
+    <string name="weather_empty_title">Zatím žádná místa</string>
+    <string name="weather_empty_message">Vyhledej nahoře město a klepnutím si ho tu nech.</string>
+    <string name="weather_remove">Odebrat %1$s</string>
+    <string name="weather_results_empty_title">Nic nenalezeno</string>
+    <string name="weather_results_empty_message">Žádné místo se nejmenuje „%1$s“. Zkuste méně písmen nebo jiný zápis.</string>
+    <string name="weather_searching">Hledání</string>
+    <string name="weather_selected_count">Vybráno: %1$d</string>
+    <string name="weather_select_all">Vybrat vše</string>
+    <string name="weather_remove_selected">Odebrat vybraná místa</string>
+    <string name="weather_selection_clear">Zrušit výběr</string>
+    <string name="weather_remove_selected_message">Zmizí z tohoto seznamu i s předpovědí.</string>
+    <string name="weather_remove_selected_confirm">Odebrat</string>
+    <string name="weather_remove_selected_cancel">Ponechat</string>
+    <string name="weather_removed_undo">Zpět</string>
+    <string name="weather_suggested_title">Nebo vyberte některé z těchto</string>
+    <string name="weather_unit_celsius">°C</string>
+    <string name="weather_unit_fahrenheit">°F</string>
+    <string name="forecast_stale">Z %1$s — potáhnutím obnovíte</string>
+    <string name="forecast_save">Uložit</string>
+    <string name="forecast_unknown_place">Takové místo aplikace nezná</string>
+    <string name="forecast_updated_at">Aktualizováno v %1$s</string>
+    <string name="forecast_today_line">Hodinová teplota na příští den, s pravděpodobností srážek</string>
+    <string name="forecast_week_line">Denní maxima a minima od %1$d do %2$d stupňů během týdne</string>
+    <string name="forecast_tab_today">Dnes</string>
+    <string name="forecast_tab_week">Týden</string>
+    <string name="forecast_wind_at">Vítr %1$s km/h · v %2$s</string>
+    <string name="forecast_rain_chance">Déšť %1$s</string>
+    <string name="forecast_precipitation">%1$s mm</string>
+    <string name="forecast_code_clear">Jasno</string>
+    <string name="forecast_code_cloudy">Oblačno</string>
+    <string name="forecast_code_fog">Mlha</string>
+    <string name="forecast_code_drizzle">Mrholení</string>
+    <string name="forecast_code_rain">Déšť</string>
+    <string name="forecast_code_snow">Sníh</string>
+    <string name="forecast_code_showers">Přeháňky</string>
+    <string name="forecast_code_thunder">Bouřky</string>
+    <plurals name="weather_remove_selected_title">
+        <item quantity="one">Odebrat %d místo?</item>
+        <item quantity="few">Odebrat %d místa?</item>
+        <item quantity="many">Odebrat %d místa?</item>
+        <item quantity="other">Odebrat %d míst?</item>
+    </plurals>
+    <plurals name="weather_removed">
+        <item quantity="one">%d místo odebráno</item>
+        <item quantity="few">%d místa odebrána</item>
+        <item quantity="many">%d místa odebrána</item>
+        <item quantity="other">%d míst odebráno</item>
+    </plurals>
+    <string name="weather_create_title">Přidat místo</string>
+    <string name="weather_door_title">Počasí</string>
+    <plurals name="weather_door_count">
+        <item quantity="one">%d místo</item>
+        <item quantity="few">%d místa</item>
+        <item quantity="many">%d místa</item>
+        <item quantity="other">%d míst</item>
+    </plurals>
+    <string name="forecast_placeholder_title">Vyberte místo</string>
+    <string name="forecast_placeholder_message">Jeho předpověď se zobrazí tady.</string>
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movies_title">Seriály</string>
+    <string name="movies_empty_title">Žádné seriály</string>
+    <string name="movies_empty_message">Nic nepřišlo. Přetažením dolů to zkusíte znovu.</string>
+    <string name="movies_page_error">Další seriály se nepodařilo načíst.</string>
+    <string name="movies_retry">Zkusit znovu</string>
+    <string name="movies_error_title">Seriály se nepodařilo načíst</string>
+    <string name="movies_error_message">Zkontrolujte připojení a zkuste to znovu.</string>
+    <string name="movies_stale">Zobrazuje se, co se načetlo minule.</string>
+    <string name="movie_detail_released">Premiéra</string>
+    <string name="movie_detail_runtime">Délka</string>
+    <string name="movie_detail_rating">Hodnocení</string>
+    <string name="movies_favourites">Oblíbené</string>
+    <string name="movies_action_open">Otevřít</string>
+    <string name="movies_action_favourite">Přidat do oblíbených</string>
+    <string name="movies_favourite_added">Přidáno do oblíbených</string>
+    <string name="movie_favourites_title">Oblíbené seriály</string>
+    <string name="movie_favourites_empty_title">Zatím nic oblíbeného</string>
+    <string name="movie_favourites_empty_message">Klepni na srdíčko u seriálu a zůstane tady.</string>
+    <string name="movie_detail_favourite_added">Přidáno do oblíbených</string>
+    <string name="movie_detail_favourite_removed">Odebráno z oblíbených</string>
+    <string name="movie_detail_favourite_view">Zobrazit</string>
+    <string name="movie_favourites_remove">Odebrat z oblíbených</string>
+    <string name="movie_detail_favourite_add">Přidat do oblíbených</string>
+    <string name="movie_detail_favourite_remove">Odebrat z oblíbených</string>
+    <string name="movie_detail_poster_open">Otevřít plakát</string>
+    <string name="movies_last_updated">Aktualizováno %1$s</string>
+    <plurals name="movies_refresh_failed_minutes">
+        <item quantity="one">Nepodařilo se obnovit. Seznam je %d minutu starý.</item>
+        <item quantity="few">Nepodařilo se obnovit. Seznam je %d minuty starý.</item>
+        <item quantity="many">Nepodařilo se obnovit. Seznam je %d minuty starý.</item>
+        <item quantity="other">Nepodařilo se obnovit. Seznam je %d minut starý.</item>
+    </plurals>
+    <plurals name="movies_refresh_failed_hours">
+        <item quantity="one">Nepodařilo se obnovit. Seznam je %d hodinu starý.</item>
+        <item quantity="few">Nepodařilo se obnovit. Seznam je %d hodiny starý.</item>
+        <item quantity="many">Nepodařilo se obnovit. Seznam je %d hodiny starý.</item>
+        <item quantity="other">Nepodařilo se obnovit. Seznam je %d hodin starý.</item>
+    </plurals>
+    <plurals name="movies_refresh_failed_days">
+        <item quantity="one">Nepodařilo se obnovit. Seznam je %d den starý.</item>
+        <item quantity="few">Nepodařilo se obnovit. Seznam je %d dny starý.</item>
+        <item quantity="many">Nepodařilo se obnovit. Seznam je %d dne starý.</item>
+        <item quantity="other">Nepodařilo se obnovit. Seznam je %d dní starý.</item>
+    </plurals>
+    <string name="movies_door_title">Seriály</string>
+    <plurals name="movies_door_count">
+        <item quantity="one">%d oblíbený</item>
+        <item quantity="few">%d oblíbené</item>
+        <item quantity="many">%d oblíbeného</item>
+        <item quantity="other">%d oblíbených</item>
+    </plurals>
+    <string name="movie_detail_placeholder_title">Vyberte pořad</string>
+    <string name="movie_detail_placeholder_message">Jeho podrobnosti se zobrazí tady.</string>
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_title">Sign in</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_submit">Sign in</string>
+    <string name="login_skip">Skip login</string>
+    <string name="login_sign_up">Don\'t have an account? Sign up</string>
+    <string name="login_or">or</string>
+    <string name="sign_up_title">Create account</string>
+    <string name="sign_up_email">Email</string>
+    <string name="sign_up_password">Password</string>
+    <string name="sign_up_confirm_password">Confirm password</string>
+    <string name="sign_up_submit">Sign up</string>
+    <string name="sign_up_login">Already have an account? Log in</string>
+    <string name="forgot_password_title">Forgot password</string>
+    <string name="forgot_password_intro">Enter the address you signed up with, and we will send a link to set a new password.</string>
+    <string name="forgot_password_email">Email</string>
+    <string name="forgot_password_submit">Send link</string>
+    <string name="forgot_password_sent">If an account uses %1$s, a link to reset its password is on its way. Check your inbox, and the spam folder too.</string>
+    <string name="forgot_password_rate_limited">You asked a moment ago. Wait a minute, then send it again.</string>
+    <string name="forgot_password_resend">Send it again</string>
+    <string name="login_forgot_password">Forgot password?</string>
+    <plurals name="forgot_password_resend_in">
+        <item quantity="one">Send again in %1$d second</item>
+        <item quantity="other">Send again in %1$d seconds</item>
+    </plurals>
+    <string name="reset_password_title">New password</string>
+    <string name="reset_password_intro">Choose a new password for your account. You will sign in with it next.</string>
+    <string name="reset_password_password">New password</string>
+    <string name="reset_password_confirm">Repeat the new password</string>
+    <string name="reset_password_submit">Set password</string>
+    <string name="login_password_reset">Your password is set. Sign in with it now.</string>
+    <string name="verify_email_title">Check your inbox</string>
+    <string name="verify_email_intro">We sent a six-digit code to %1$s. Enter it to finish creating your account.</string>
+    <string name="verify_email_code">Code</string>
+    <string name="verify_email_submit">Verify</string>
+    <string name="verify_email_resend">Send a new code</string>
+    <string name="verify_email_code_incomplete">The code has six digits</string>
+    <plurals name="verify_email_resend_in">
+        <item quantity="one">Send a new code in %1$d second</item>
+        <item quantity="other">Send a new code in %1$d seconds</item>
+    </plurals>
+    <string name="sign_up_terms">I accept the terms of use and the privacy policy</string>
+    <string name="sign_up_terms_link">Terms of use</string>
+    <string name="sign_up_privacy_link">Privacy policy</string>
+    <string name="sign_up_terms_required">Accept the terms to create an account</string>
+    <string name="app_lock_title">Locked</string>
+    <string name="app_lock_message">Prove it is you to carry on.</string>
+    <string name="app_lock_unlock">Unlock</string>
+    <string name="app_lock_prompt">Unlock the app</string>
+</resources>

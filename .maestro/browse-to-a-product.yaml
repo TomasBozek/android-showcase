@@ -1,0 +1,35 @@
+# The catalog reaches a product, and the product can be favourited.
+appId: ${APP_ID}
+env:
+  # The dev build unless the run says otherwise — see config.yaml.
+  APP_ID: ${APP_ID || "com.example.androidproject1.dev"}
+name: Browse the catalog to a product
+---
+- runFlow: sign-in.yaml
+
+- tapOn:
+    id: "CategoriesScreen"
+    optional: true
+- tapOn:
+    id: "tabs_catalogTab"
+- assertVisible:
+    id: "CategoriesScreen"
+- tapOn:
+    id: "categories_item_beverages"
+- assertVisible:
+    id: "ProductsScreen"
+- tapOn:
+    id: "products_item_coffee"
+- assertVisible:
+    id: "ProductDetailScreen"
+
+# The heart is an icon, so its contentDescription is its id — which is why accessibility here is
+# a by-product of being testable rather than separate work.
+- tapOn:
+    id: "productDetail_favouriteButton"
+# The favourites are the catalog's: a second tap on its tab pops to Categories, where the product
+# is now a row of its own above the categories.
+- tapOn:
+    id: "tabs_catalogTab"
+- assertVisible:
+    id: "categories_item_coffee"

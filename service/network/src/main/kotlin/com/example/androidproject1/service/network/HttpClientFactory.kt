@@ -1,0 +1,306 @@
+package com.example.androidproject1.service.network
+
+import com.example.androidproject1.service.log.domain.Logger
+import io.ktor.client.HttpClient
+import io.ktor.client.call.save
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.network.sockets.ConnectTimeoutException
+import io.ktor.client.network.sockets.SocketTimeoutException
+import io.ktor.client.plugins.HttpRequestRetry
+import io.ktor.client.plugins.HttpRequestTimeoutException
+import io.ktor.client.plugins.HttpResponseValidator
+import io.ktor.client.plugins.HttpRetryShouldRetryContext
+import io.ktor.client.plugins.HttpTimeout
+import io.ktor.client.plugins.ResponseException
+import io.ktor.client.plugins.api.Send
+import io.ktor.client.plugins.api.createClientPlugin
+import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.AuthProvider
+import io.ktor.client.plugins.auth.providers.BearerTokens
+import io.ktor.client.plugins.auth.providers.bearer
+import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.client.plugins.defaultRequest
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.client.request.HttpRequestBuilder
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
+import io.ktor.http.ContentType
+import io.ktor.http.HttpHeaders
+import io.ktor.http.HttpMethod
+import io.ktor.http.HttpStatusCode
+import io.ktor.http.Url
+import io.ktor.http.auth.HttpAuthHeader
+import io.ktor.http.content.ByteArrayContent
+import io.ktor.http.content.TextContent
+import io.ktor.http.contentType
+import io.ktor.serialization.kotlinx.json.json
+import kotlinx.serialization.json.Json
+import java.io.IOException
+import kotlin.coroutines.cancellation.CancellationException
+import io.ktor.client.plugins.logging.Logger as KtorLogger
+
+/**
+ * Builds the app's [HttpClient].
+ *
+ * The engine is a parameter, not a dependency: `:app` hands it OkHttp, `dev` hands it the
+ * `MockEngine` serving the fixtures, and a test hands it one that answers whatever the test is
+ * about. That is the whole reason this module has no engine of its own.
+ *
+ * The client retries a failed request itself, so no data source has to: up to
+ * [NetworkConfig.retries] more tries on a 5xx or a transport failure, with an exponential backoff.
+ * **A POST is never retried** — a retried order is a double order, and the client cannot tell a
+ * request that never arrived from one whose answer did not come back. Only the idempotent methods
+ * are, which is what makes the policy safe to apply to every call in the app at once. And nothing
+ * is retried while [ConnectivityMonitor.online] is false: a device with no route gives every try
+ * the same answer, so the failure is reported at once instead of after the backoff.
+ */
+public object HttpClientFactory {
+
+    /** Lenient on unknown keys: a server adding a field must not break a shipped client. */
+    public val DefaultJson: Json = Json {
+        ignoreUnknownKeys = true
+        explicitNulls = false
+        encodeDefaults = true
+    }
+
+    public fun create(
+        engine: HttpClientEngine,
+        config: NetworkConfig,
+        logger: Logger? = null,
+        logSink: ((String) -> Unit)? = null,
+        tokenStore: TokenStore? = null,
+        tokenRefresher: TokenRefresher? = null,
+        connectivity: ConnectivityMonitor = ConnectivityMonitor.AlwaysOnline,
+        sessionEnder: SessionEnder? = null,
+        identity: RequestIdentity? = null,
+        onFailure: ((requestId: String) -> Unit)? = null,
+        onExchange: ((HttpExchange) -> Unit)? = null,
+        json: Json = DefaultJson,
+    ): HttpClient = HttpClient(engine) {
+        // A non-2xx becomes a ResponseException, which HttpErrorMapper turns into a DomainError.
+        expectSuccess = true
+
+        // A 401 that reaches here is one the bearer refresh could not answer, and it means
+        // the session is over, whichever request found out. Seen where every response
+        // passes, rather than in each view model that happens to be asking — which is how the old
+        // behaviour was an alert on one screen and the same 401 on the next. A 403 is not this:
+        // the session is fine and the thing is not theirs. `SessionEnder` is the one place it ends.
+        // A failure of any kind — a non-2xx or no answer at all — also reports its request id, so the
+        // dev menu can show the one a support ticket should quote.
+        if (sessionEnder != null || onFailure != null) {
+            HttpResponseValidator {
+                handleResponseExceptionWithRequest { cause, request ->
+                    if (sessionEnder != null &&
+                        (cause as? ResponseException)?.response?.status == HttpStatusCode.Unauthorized
+                    ) {
+                        sessionEnder.end(EndReason.Unauthorized)
+                    }
+                    if (cause !is CancellationException) {
+                        request.headers[RequestIdentity.REQUEST_ID_HEADER]?.let { onFailure?.invoke(it) }
+                    }
+                }
+            }
+        }
+
+        install(ContentNegotiation) { json(json) }
+
+        install(HttpTimeout) {
+            requestTimeoutMillis = config.requestTimeoutMillis
+            connectTimeoutMillis = config.connectTimeoutMillis
+            socketTimeoutMillis = config.socketTimeoutMillis
+        }
+
+        if (config.retries > 0) {
+            install(HttpRequestRetry) {
+                maxRetries = config.retries
+
+                // Idempotent methods only. A retried GET costs a second read; a retried POST is a
+                // second order, a second payment, a second message — and the client cannot tell
+                // whether the first one reached the server, only that the answer did not come
+                // back. A POST that is safe to repeat says so with an idempotency key and a
+                // `retry { }` block on the request itself, which is a decision per endpoint.
+                // Read at the moment of the decision, not at install: the device that was online
+                // when the client was built is the one in the tunnel now.
+                retryIf { request, response ->
+                    connectivity.online.value &&
+                        request.method.isIdempotent() &&
+                        (response.status.value in 500..599 || isFirstShortRateLimit(response))
+                }
+                retryOnExceptionIf { request, cause ->
+                    connectivity.online.value && request.method.isIdempotent() && cause.isTransport()
+                }
+
+                // 500 ms, then 1 s, then 2 s, plus up to 250 ms of jitter so a fleet coming back
+                // from an outage does not arrive in one wave. Capped, because a phone in a tunnel
+                // is better served by an error than by a spinner that lasts a minute.
+                // A `Retry-After` the server sent is waited out when it is longer.
+                exponentialDelay(
+                    baseDelayMs = 500,
+                    maxDelayMs = 5_000,
+                    randomizationMs = 250,
+                    respectRetryAfterHeader = true,
+                )
+            }
+        }
+
+        // `logSink` takes the same lines as the logger — the dev menu's network log keeps them —
+        // without this module knowing who listens.
+        if (logger != null || logSink != null) {
+            install(Logging) {
+                this.logger = object : KtorLogger {
+                    override fun log(message: String) {
+                        logger?.d { message }
+                        logSink?.invoke(message)
+                    }
+                }
+                // HEADERS and BODY carry the bearer token and whatever the user typed, so the
+                // level is a decision the caller makes per build type, never a default.
+                level = if (config.logBodies) LogLevel.BODY else LogLevel.INFO
+            }
+        }
+
+        if (tokenStore != null && tokenRefresher != null) {
+            val refresher = SingleFlightTokenRefresher(tokenStore, tokenRefresher)
+            val apiHost = Url(config.baseUrl).host
+            install(Auth) {
+                bearer {
+                    // The store is the truth, read on every request: Ktor's own cache of what
+                    // `loadTokens` returned outlives a sign-out in this app-wide client, and would
+                    // send the last account's token on every request after it.
+                    cacheTokens = false
+                    sendWithoutRequest { true }
+                    loadTokens {
+                        tokenStore.accessToken()?.let {
+                            BearerTokens(accessToken = it, refreshToken = tokenStore.refreshToken())
+                        }
+                    }
+                    refreshTokens {
+                        refresher.refresh(staleAccessToken = oldTokens?.accessToken)?.let {
+                            BearerTokens(accessToken = it.accessToken, refreshToken = it.refreshToken)
+                        }
+                    }
+                }
+                // The token belongs to the API. Ktor sends it wherever a request goes, and again
+                // wherever a 401 asks for a refresh — a third-party host's 401 would hand it over.
+                providers.replaceAll { ApiHostOnly(it, apiHost) }
+            }
+        }
+
+        defaultRequest {
+            url(config.baseUrl)
+            contentType(ContentType.Application.Json)
+        }
+
+        // Every host, not just the API's: none of the three says anything a server should not hear.
+        // Set before the retry, so a request tried again is the same request to the server.
+        if (identity != null) {
+            install(
+                createClientPlugin("RequestIdentity") {
+                    onRequest { request, _ ->
+                        request.headers[HttpHeaders.UserAgent] = identity.userAgent
+                        request.headers[HttpHeaders.AcceptLanguage] = identity.language()
+                        if (!request.headers.contains(RequestIdentity.REQUEST_ID_HEADER)) {
+                            request.headers[RequestIdentity.REQUEST_ID_HEADER] = identity.newRequestId()
+                        }
+                    }
+                },
+            )
+        }
+
+        // Last, so it is the innermost `Send`: each attempt a retry or a refresh makes is an
+        // exchange of its own, and the bearer the auth plugin added is never read here.
+        if (onExchange != null) install(exchangeLog(onExchange))
+    }
+}
+
+private fun exchangeLog(onExchange: (HttpExchange) -> Unit) = createClientPlugin("ExchangeLog") {
+    on(Send) { request ->
+        val started = System.nanoTime()
+        val method = request.method.value
+        val url = request.url.buildString()
+        val requestBody = request.body.asText()
+        fun elapsed() = (System.nanoTime() - started) / 1_000_000
+        val call = try {
+            proceed(request)
+        } catch (cause: Throwable) {
+            if (cause !is CancellationException) {
+                onExchange(HttpExchange(method, url, null, elapsed(), requestBody, null))
+            }
+            throw cause
+        }
+        // Saved, so the body read here is still there for the caller.
+        val saved = call.save()
+        val responseBody = runCatching { saved.response.bodyAsText().take(HttpExchange.MAX_BODY) }.getOrNull()
+        onExchange(HttpExchange(method, url, saved.response.status.value, elapsed(), requestBody, responseBody))
+        saved
+    }
+}
+
+private fun Any.asText(): String? = when (this) {
+    is TextContent -> text
+    is ByteArrayContent -> bytes().decodeToString()
+    else -> null
+}?.take(HttpExchange.MAX_BODY)
+
+/**
+ * The methods RFC 9110 calls idempotent — repeating one has the same effect as making it once.
+ *
+ * An allowlist rather than "not POST", so a method nobody thought about is not retried by default.
+ */
+private val IDEMPOTENT_METHODS = setOf(
+    HttpMethod.Get,
+    HttpMethod.Head,
+    HttpMethod.Options,
+    HttpMethod.Put,
+    HttpMethod.Delete,
+)
+
+private fun HttpMethod.isIdempotent(): Boolean = this in IDEMPOTENT_METHODS
+
+/**
+ * A `429` is tried again once, and only when the server said when — a `Retry-After` of at
+ * most [MAX_RETRY_AFTER_SECONDS]. One with no time, or a long one, is the server saying not now:
+ * waiting it out behind a spinner would be worse than saying so, which `RateLimitedError` does.
+ */
+private fun HttpRetryShouldRetryContext.isFirstShortRateLimit(response: HttpResponse): Boolean =
+    // The retry this would be, counted from 1.
+    retryCount == 1 &&
+        response.status == HttpStatusCode.TooManyRequests &&
+        response.headers[HttpHeaders.RetryAfter]?.toLongOrNull() in 0..MAX_RETRY_AFTER_SECONDS
+
+private const val MAX_RETRY_AFTER_SECONDS = 10L
+
+/**
+ * A failure that never got an answer out of the server, and so is worth asking again.
+ *
+ * Timeouts are not: the request may well have arrived and been acted on, the wait has already
+ * cost the configured seconds, and retrying spends them twice more. Cancellation is not either —
+ * the caller has left.
+ */
+private fun Throwable.isTransport(): Boolean = when (this) {
+    is CancellationException -> false
+    is HttpRequestTimeoutException, is ConnectTimeoutException, is SocketTimeoutException -> false
+    else -> this is IOException
+}
+
+/**
+ * A bearer provider that acts for one host only: the token is neither sent to another host nor
+ * refreshed on its 401. Everything else is the delegate's.
+ */
+@Suppress("DEPRECATION")
+private class ApiHostOnly(
+    private val delegate: AuthProvider,
+    private val host: String,
+) : AuthProvider by delegate {
+
+    override fun sendWithoutRequest(request: HttpRequestBuilder): Boolean =
+        request.url.host == host && delegate.sendWithoutRequest(request)
+
+    override suspend fun addRequestHeaders(request: HttpRequestBuilder, authHeader: HttpAuthHeader?) {
+        if (request.url.host == host) delegate.addRequestHeaders(request, authHeader)
+    }
+
+    override suspend fun refreshToken(response: HttpResponse): Boolean =
+        response.call.request.url.host == host && delegate.refreshToken(response)
+}

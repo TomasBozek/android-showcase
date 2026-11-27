@@ -1,0 +1,1966 @@
+[
+  {
+    "id": 1,
+    "name": "Under the Dome",
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-06-24",
+    "rating": {
+      "average": 6.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/610/1525272.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/610/1525272.jpg"
+    },
+    "summary": "<p><b>Under the Dome</b> is a drama series that premiered in 2013 on CBS.</p>"
+  },
+  {
+    "id": 2,
+    "name": "Person of Interest",
+    "genres": [
+      "Action",
+      "Crime",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-09-22",
+    "rating": {
+      "average": 8.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/163/407679.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"
+    },
+    "summary": "<p><b>Person of Interest</b> is a action series that premiered in 2011 on CBS.</p>"
+  },
+  {
+    "id": 3,
+    "name": "Bitten",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Romance"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-01-11",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/15.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/15.jpg"
+    },
+    "summary": "<p><b>Bitten</b> is a drama series that premiered in 2014 on CTV Sci-Fi Channel.</p>"
+  },
+  {
+    "id": 4,
+    "name": "Arrow",
+    "genres": [
+      "Drama",
+      "Action",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2012-10-10",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/143/358967.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/143/358967.jpg"
+    },
+    "summary": "<p><b>Arrow</b> is a drama series that premiered in 2012 on The CW.</p>"
+  },
+  {
+    "id": 5,
+    "name": "True Detective",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 63,
+    "premiered": "2014-01-12",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/490/1226764.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/490/1226764.jpg"
+    },
+    "summary": "<p><b>True Detective</b> is a drama series that premiered in 2014 on HBO.</p>"
+  },
+  {
+    "id": 6,
+    "name": "The 100",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-03-19",
+    "rating": {
+      "average": 7.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/477/1194981.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/477/1194981.jpg"
+    },
+    "summary": "<p><b>The 100</b> is a action series that premiered in 2014 on The CW.</p>"
+  },
+  {
+    "id": 7,
+    "name": "Homeland",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Espionage"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-10-02",
+    "rating": {
+      "average": 8.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/498/1245275.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/498/1245275.jpg"
+    },
+    "summary": "<p><b>Homeland</b> is a drama series that premiered in 2011 on Paramount+ with Showtime.</p>"
+  },
+  {
+    "id": 8,
+    "name": "Glee",
+    "genres": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2009-05-19",
+    "rating": {
+      "average": 6.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/73.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/73.jpg"
+    },
+    "summary": "<p><b>Glee</b> is a drama series that premiered in 2009 on FOX.</p>"
+  },
+  {
+    "id": 9,
+    "name": "Revenge",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Mystery"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-09-21",
+    "rating": {
+      "average": 7.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/82/206879.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/82/206879.jpg"
+    },
+    "summary": "<p><b>Revenge</b> is a drama series that premiered in 2011 on ABC.</p>"
+  },
+  {
+    "id": 10,
+    "name": "Grimm",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-10-28",
+    "rating": {
+      "average": 8.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/69/174906.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/69/174906.jpg"
+    },
+    "summary": "<p><b>Grimm</b> is a drama series that premiered in 2011 on NBC.</p>"
+  },
+  {
+    "id": 11,
+    "name": "Gotham",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-22",
+    "rating": {
+      "average": 7.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/189/474715.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/189/474715.jpg"
+    },
+    "summary": "<p><b>Gotham</b> is a drama series that premiered in 2014 on FOX.</p>"
+  },
+  {
+    "id": 12,
+    "name": "Lost Girl",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-09-12",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/137.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/137.jpg"
+    },
+    "summary": "<p><b>Lost Girl</b> is a drama series that premiered in 2010 on Showcase.</p>"
+  },
+  {
+    "id": 13,
+    "name": "The Flash",
+    "genres": [
+      "Drama",
+      "Action",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-10-07",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/448/1121792.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/448/1121792.jpg"
+    },
+    "summary": "<p><b>The Flash</b> is a drama series that premiered in 2014 on The CW.</p>"
+  },
+  {
+    "id": 14,
+    "name": "Continuum",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2012-05-27",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/184.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/184.jpg"
+    },
+    "summary": "<p><b>Continuum</b> is a drama series that premiered in 2012 on Showcase.</p>"
+  },
+  {
+    "id": 15,
+    "name": "Constantine",
+    "genres": [
+      "Drama",
+      "Action",
+      "Horror"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-10-24",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/154.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/154.jpg"
+    },
+    "summary": "<p><b>Constantine</b> is a drama series that premiered in 2014 on NBC.</p>"
+  },
+  {
+    "id": 16,
+    "name": "Penny Dreadful",
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-05-11",
+    "rating": {
+      "average": 8.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/48/122260.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/48/122260.jpg"
+    },
+    "summary": "<p><b>Penny Dreadful</b> is a horror series that premiered in 2014 on Paramount+ with Showtime.</p>"
+  },
+  {
+    "id": 18,
+    "name": "The Amazing Race",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Family"
+    ],
+    "runtime": 90,
+    "averageRuntime": 65,
+    "premiered": "2001-09-05",
+    "rating": {
+      "average": 6.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/642/1606113.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/642/1606113.jpg"
+    },
+    "summary": "<p><b>The Amazing Race</b> is a action series that premiered in 2001 on CBS.</p>"
+  },
+  {
+    "id": 19,
+    "name": "Supernatural",
+    "genres": [
+      "Drama",
+      "Action",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2005-09-13",
+    "rating": {
+      "average": 8.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1114097.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1114097.jpg"
+    },
+    "summary": "<p><b>Supernatural</b> is a drama series that premiered in 2005 on The CW.</p>"
+  },
+  {
+    "id": 20,
+    "name": "The Strain",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 61,
+    "premiered": "2014-07-13",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/444/1111710.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/444/1111710.jpg"
+    },
+    "summary": "<p><b>The Strain</b> is a drama series that premiered in 2014 on FX.</p>"
+  },
+  {
+    "id": 21,
+    "name": "The Last Ship",
+    "genres": [
+      "Drama",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-06-22",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/164/412464.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/164/412464.jpg"
+    },
+    "summary": "<p><b>The Last Ship</b> is a drama series that premiered in 2014 on TNT.</p>"
+  },
+  {
+    "id": 22,
+    "name": "True Blood",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2008-09-07",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/410/1026956.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/410/1026956.jpg"
+    },
+    "summary": "<p><b>True Blood</b> is a drama series that premiered in 2008 on HBO.</p>"
+  },
+  {
+    "id": 23,
+    "name": "Once Upon a Time in Wonderland",
+    "genres": [
+      "Drama",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-10-10",
+    "rating": {
+      "average": 6.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/73/183661.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/73/183661.jpg"
+    },
+    "summary": "<p><b>Once Upon a Time in Wonderland</b> is a drama series that premiered in 2013 on ABC.</p>"
+  },
+  {
+    "id": 24,
+    "name": "Hawaii Five-0",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-09-20",
+    "rating": {
+      "average": 7.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/213/532575.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/213/532575.jpg"
+    },
+    "summary": "<p><b>Hawaii Five-0</b> is a drama series that premiered in 2010 on CBS.</p>"
+  },
+  {
+    "id": 25,
+    "name": "Hellsing",
+    "genres": [
+      "Anime",
+      "Horror",
+      "Supernatural"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2001-10-10",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/178/446544.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/178/446544.jpg"
+    },
+    "summary": "<p><b>Hellsing</b> is a anime series that premiered in 2001 on Fuji TV.</p>"
+  },
+  {
+    "id": 26,
+    "name": "Hellsing Ultimate",
+    "genres": [
+      "Drama",
+      "Action",
+      "Anime",
+      "Horror"
+    ],
+    "runtime": 50,
+    "averageRuntime": 50,
+    "premiered": "2006-02-10",
+    "rating": {
+      "average": 7.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/178/446780.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/178/446780.jpg"
+    },
+    "summary": "<p><b>Hellsing Ultimate</b> is a drama series that premiered in 2006 on TBS.</p>"
+  },
+  {
+    "id": 27,
+    "name": "Berserk",
+    "genres": [
+      "Anime",
+      "Fantasy",
+      "Horror"
+    ],
+    "runtime": 25,
+    "averageRuntime": 25,
+    "premiered": "1997-10-07",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/396/991619.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/396/991619.jpg"
+    },
+    "summary": "<p><b>Berserk</b> is a anime series that premiered in 1997 on NTV.</p>"
+  },
+  {
+    "id": 28,
+    "name": "Californication",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2007-08-13",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/38/95017.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/38/95017.jpg"
+    },
+    "summary": "<p><b>Californication</b> is a drama series that premiered in 2007 on Paramount+ with Showtime.</p>"
+  },
+  {
+    "id": 29,
+    "name": "Vikings",
+    "genres": [
+      "Drama",
+      "Action",
+      "History"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-03-03",
+    "rating": {
+      "average": 8.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/286/715906.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/286/715906.jpg"
+    },
+    "summary": "<p><b>Vikings</b> is a drama series that premiered in 2013 on History.</p>"
+  },
+  {
+    "id": 30,
+    "name": "American Horror Story",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": 30,
+    "averageRuntime": 58,
+    "premiered": "2011-10-05",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/642/1607475.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/642/1607475.jpg"
+    },
+    "summary": "<p><b>American Horror Story</b> is a drama series that premiered in 2011 on FX.</p>"
+  },
+  {
+    "id": 31,
+    "name": "Marvel's Agents of S.H.I.E.L.D.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-09-24",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/486/1215694.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/486/1215694.jpg"
+    },
+    "summary": "<p><b>Marvel's Agents of S.H.I.E.L.D.</b> is a action series that premiered in 2013 on ABC.</p>"
+  },
+  {
+    "id": 32,
+    "name": "Fargo",
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 67,
+    "premiered": "2014-04-15",
+    "rating": {
+      "average": 8.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/487/1219631.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/487/1219631.jpg"
+    },
+    "summary": "<p><b>Fargo</b> is a drama series that premiered in 2014 on FX.</p>"
+  },
+  {
+    "id": 33,
+    "name": "Hemlock Grove",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Thriller"
+    ],
+    "runtime": null,
+    "averageRuntime": 52,
+    "premiered": "2013-04-19",
+    "rating": {
+      "average": 6.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/305.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/305.jpg"
+    },
+    "summary": "<p><b>Hemlock Grove</b> is a drama series that premiered in 2013 on Netflix.</p>"
+  },
+  {
+    "id": 34,
+    "name": "Helix",
+    "genres": [
+      "Horror",
+      "Science-Fiction",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-01-10",
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/126/316697.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/126/316697.jpg"
+    },
+    "summary": "<p><b>Helix</b> is a horror series that premiered in 2014 on Syfy.</p>"
+  },
+  {
+    "id": 35,
+    "name": "The Killing",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-04-03",
+    "rating": {
+      "average": 8.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/216/540157.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/216/540157.jpg"
+    },
+    "summary": "<p><b>The Killing</b> is a drama series that premiered in 2011 on AMC.</p>"
+  },
+  {
+    "id": 37,
+    "name": "Intruders",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-08-23",
+    "rating": {
+      "average": 7.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/126/316698.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/126/316698.jpg"
+    },
+    "summary": "<p><b>Intruders</b> is a drama series that premiered in 2014 on BBC America.</p>"
+  },
+  {
+    "id": 38,
+    "name": "Z Nation",
+    "genres": [
+      "Action",
+      "Horror",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 61,
+    "premiered": "2014-09-12",
+    "rating": {
+      "average": 7.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/170/426759.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/170/426759.jpg"
+    },
+    "summary": "<p><b>Z Nation</b> is a action series that premiered in 2014 on Syfy.</p>"
+  },
+  {
+    "id": 39,
+    "name": "Resurrection",
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Mystery"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-03-09",
+    "rating": {
+      "average": 7.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/350.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/350.jpg"
+    },
+    "summary": "<p><b>Resurrection</b> is a drama series that premiered in 2014 on ABC.</p>"
+  },
+  {
+    "id": 40,
+    "name": "Death Note",
+    "genres": [
+      "Anime",
+      "Fantasy",
+      "Thriller"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2006-10-03",
+    "rating": {
+      "average": 8.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/499/1249019.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/499/1249019.jpg"
+    },
+    "summary": "<p><b>Death Note</b> is a anime series that premiered in 2006 on NTV.</p>"
+  },
+  {
+    "id": 41,
+    "name": "Last Man Standing",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2011-10-11",
+    "rating": {
+      "average": 7.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/419/1049994.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/419/1049994.jpg"
+    },
+    "summary": "<p><b>Last Man Standing</b> is a comedy series that premiered in 2011 on FOX.</p>"
+  },
+  {
+    "id": 42,
+    "name": "Sleepy Hollow",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-09-16",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/204166.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/81/204166.jpg"
+    },
+    "summary": "<p><b>Sleepy Hollow</b> is a drama series that premiered in 2013 on FOX.</p>"
+  },
+  {
+    "id": 43,
+    "name": "Outlander",
+    "genres": [
+      "Adventure",
+      "Romance",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 61,
+    "premiered": "2014-08-09",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/616/1541142.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/616/1541142.jpg"
+    },
+    "summary": "<p><b>Outlander</b> is a adventure series that premiered in 2014 on STARZ.</p>"
+  },
+  {
+    "id": 44,
+    "name": "Scorpion",
+    "genres": [
+      "Drama",
+      "Action",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-22",
+    "rating": {
+      "average": 7.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/128/322484.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/128/322484.jpg"
+    },
+    "summary": "<p><b>Scorpion</b> is a drama series that premiered in 2014 on CBS.</p>"
+  },
+  {
+    "id": 45,
+    "name": "NCIS: New Orleans",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-23",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/280/701985.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/280/701985.jpg"
+    },
+    "summary": "<p><b>NCIS: New Orleans</b> is a drama series that premiered in 2014 on CBS.</p>"
+  },
+  {
+    "id": 46,
+    "name": "Forever",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-22",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/383.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/383.jpg"
+    },
+    "summary": "<p><b>Forever</b> is a drama series that premiered in 2014 on ABC.</p>"
+  },
+  {
+    "id": 47,
+    "name": "Witches of East End",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "Romance"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-10-06",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/392.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/392.jpg"
+    },
+    "summary": "<p><b>Witches of East End</b> is a drama series that premiered in 2013 on Lifetime.</p>"
+  },
+  {
+    "id": 48,
+    "name": "Madam Secretary",
+    "genres": [
+      "Drama"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-21",
+    "rating": {
+      "average": 7.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/214/536175.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/214/536175.jpg"
+    },
+    "summary": "<p><b>Madam Secretary</b> is a drama series that premiered in 2014 on CBS.</p>"
+  },
+  {
+    "id": 49,
+    "name": "Brooklyn Nine-Nine",
+    "genres": [
+      "Comedy",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2013-09-17",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/402/1007484.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/402/1007484.jpg"
+    },
+    "summary": "<p><b>Brooklyn Nine-Nine</b> is a comedy series that premiered in 2013 on NBC.</p>"
+  },
+  {
+    "id": 50,
+    "name": "The Lottery",
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-07-20",
+    "rating": {
+      "average": 6.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/146/366444.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/146/366444.jpg"
+    },
+    "summary": "<p><b>The Lottery</b> is a drama series that premiered in 2014 on Lifetime.</p>"
+  },
+  {
+    "id": 51,
+    "name": "The Knick",
+    "genres": [
+      "Drama",
+      "Medical"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-08-08",
+    "rating": {
+      "average": 8.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/417.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/417.jpg"
+    },
+    "summary": "<p><b>The Knick</b> is a drama series that premiered in 2014 on Cinemax.</p>"
+  },
+  {
+    "id": 52,
+    "name": "How to Get Away with Murder",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Legal"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-25",
+    "rating": {
+      "average": 7.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/212/531512.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/212/531512.jpg"
+    },
+    "summary": "<p><b>How to Get Away with Murder</b> is a drama series that premiered in 2014 on ABC.</p>"
+  },
+  {
+    "id": 53,
+    "name": "Nashville",
+    "genres": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2012-10-10",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/89/224913.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/89/224913.jpg"
+    },
+    "summary": "<p><b>Nashville</b> is a drama series that premiered in 2012 on CMT.</p>"
+  },
+  {
+    "id": 54,
+    "name": "Legends",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-08-13",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/36/92018.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/36/92018.jpg"
+    },
+    "summary": "<p><b>Legends</b> is a drama series that premiered in 2014 on TNT.</p>"
+  },
+  {
+    "id": 55,
+    "name": "Red Band Society",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-17",
+    "rating": {
+      "average": 7.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/441.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/441.jpg"
+    },
+    "summary": "<p><b>Red Band Society</b> is a drama series that premiered in 2014 on FOX.</p>"
+  },
+  {
+    "id": 56,
+    "name": "Chicago P.D.",
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-01-08",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/639/1599593.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/639/1599593.jpg"
+    },
+    "summary": "<p><b>Chicago P.D.</b> is a drama series that premiered in 2014 on NBC.</p>"
+  },
+  {
+    "id": 57,
+    "name": "black-ish",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2014-09-24",
+    "rating": {
+      "average": 6.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/388/970329.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/388/970329.jpg"
+    },
+    "summary": "<p><b>black-ish</b> is a comedy series that premiered in 2014 on ABC.</p>"
+  },
+  {
+    "id": 58,
+    "name": "New Girl",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2011-09-20",
+    "rating": {
+      "average": 7.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/481/1202650.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/481/1202650.jpg"
+    },
+    "summary": "<p><b>New Girl</b> is a comedy series that premiered in 2011 on FOX.</p>"
+  },
+  {
+    "id": 59,
+    "name": "Chicago Fire",
+    "genres": [
+      "Drama",
+      "Action"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2012-10-10",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/639/1599592.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/639/1599592.jpg"
+    },
+    "summary": "<p><b>Chicago Fire</b> is a drama series that premiered in 2012 on NBC.</p>"
+  },
+  {
+    "id": 60,
+    "name": "NCIS",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2003-09-23",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/639/1599594.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/639/1599594.jpg"
+    },
+    "summary": "<p><b>NCIS</b> is a drama series that premiered in 2003 on CBS.</p>"
+  },
+  {
+    "id": 61,
+    "name": "Orphan Black",
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-03-30",
+    "rating": {
+      "average": 8.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/484/1210257.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/484/1210257.jpg"
+    },
+    "summary": "<p><b>Orphan Black</b> is a drama series that premiered in 2013 on CTV Sci-Fi Channel.</p>"
+  },
+  {
+    "id": 62,
+    "name": "The Originals",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-10-03",
+    "rating": {
+      "average": 8.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/271/678632.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/271/678632.jpg"
+    },
+    "summary": "<p><b>The Originals</b> is a drama series that premiered in 2013 on The CW.</p>"
+  },
+  {
+    "id": 63,
+    "name": "The Vampire Diaries",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2009-09-10",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/271/677698.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/271/677698.jpg"
+    },
+    "summary": "<p><b>The Vampire Diaries</b> is a drama series that premiered in 2009 on The CW.</p>"
+  },
+  {
+    "id": 64,
+    "name": "Utopia",
+    "genres": [
+      "Drama",
+      "Science-Fiction",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-01-15",
+    "rating": {
+      "average": 8.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/275/688620.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/275/688620.jpg"
+    },
+    "summary": "<p><b>Utopia</b> is a drama series that premiered in 2013 on Channel 4.</p>"
+  },
+  {
+    "id": 65,
+    "name": "Bones",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Medical"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2005-09-13",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/80/201197.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/80/201197.jpg"
+    },
+    "summary": "<p><b>Bones</b> is a drama series that premiered in 2005 on FOX.</p>"
+  },
+  {
+    "id": 66,
+    "name": "The Big Bang Theory",
+    "genres": [
+      "Comedy"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2007-09-24",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/173/433868.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/173/433868.jpg"
+    },
+    "summary": "<p><b>The Big Bang Theory</b> is a comedy series that premiered in 2007 on CBS.</p>"
+  },
+  {
+    "id": 67,
+    "name": "Grey's Anatomy",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Medical"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2005-03-27",
+    "rating": {
+      "average": 7.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/642/1605101.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/642/1605101.jpg"
+    },
+    "summary": "<p><b>Grey's Anatomy</b> is a drama series that premiered in 2005 on ABC.</p>"
+  },
+  {
+    "id": 68,
+    "name": "Castle",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Mystery"
+    ],
+    "runtime": 40,
+    "averageRuntime": 60,
+    "premiered": "2009-03-09",
+    "rating": {
+      "average": 8.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/13/34761.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/13/34761.jpg"
+    },
+    "summary": "<p><b>Castle</b> is a drama series that premiered in 2009 on ABC.</p>"
+  },
+  {
+    "id": 69,
+    "name": "The Blacklist",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-09-23",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/445/1113538.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/445/1113538.jpg"
+    },
+    "summary": "<p><b>The Blacklist</b> is a drama series that premiered in 2013 on NBC.</p>"
+  },
+  {
+    "id": 70,
+    "name": "The Voice",
+    "genres": [
+      "Music"
+    ],
+    "runtime": 120,
+    "averageRuntime": 96,
+    "premiered": "2011-04-26",
+    "rating": {
+      "average": 5.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/641/1603527.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/641/1603527.jpg"
+    },
+    "summary": "<p><b>The Voice</b> is a music series that premiered in 2011 on NBC.</p>"
+  },
+  {
+    "id": 71,
+    "name": "Dancing with the Stars",
+    "genres": [
+      "Family"
+    ],
+    "runtime": 120,
+    "averageRuntime": 119,
+    "premiered": "2005-06-01",
+    "rating": {
+      "average": 6.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/641/1603519.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/641/1603519.jpg"
+    },
+    "summary": "<p><b>Dancing with the Stars</b> is a family series that premiered in 2005 on ABC.</p>"
+  },
+  {
+    "id": 72,
+    "name": "NCIS: Los Angeles",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2009-09-22",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/444/1110924.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/444/1110924.jpg"
+    },
+    "summary": "<p><b>NCIS: Los Angeles</b> is a drama series that premiered in 2009 on CBS.</p>"
+  },
+  {
+    "id": 73,
+    "name": "The Walking Dead",
+    "genres": [
+      "Drama",
+      "Action",
+      "Horror"
+    ],
+    "runtime": null,
+    "averageRuntime": 62,
+    "premiered": "2010-10-31",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/424/1061900.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/424/1061900.jpg"
+    },
+    "summary": "<p><b>The Walking Dead</b> is a drama series that premiered in 2010 on AMC+.</p>"
+  },
+  {
+    "id": 74,
+    "name": "Hell on Wheels",
+    "genres": [
+      "Drama",
+      "Action",
+      "Western"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-11-06",
+    "rating": {
+      "average": 8.2
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/526.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/526.jpg"
+    },
+    "summary": "<p><b>Hell on Wheels</b> is a drama series that premiered in 2011 on AMC.</p>"
+  },
+  {
+    "id": 75,
+    "name": "The Mindy Project",
+    "genres": [
+      "Comedy",
+      "Romance",
+      "Medical"
+    ],
+    "runtime": null,
+    "averageRuntime": 30,
+    "premiered": "2012-09-25",
+    "rating": {
+      "average": 7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/485/1213297.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/485/1213297.jpg"
+    },
+    "summary": "<p><b>The Mindy Project</b> is a comedy series that premiered in 2012 on Hulu.</p>"
+  },
+  {
+    "id": 76,
+    "name": "Sons of Anarchy",
+    "genres": [
+      "Drama",
+      "Action",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2008-09-03",
+    "rating": {
+      "average": 8.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/495/1239905.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/495/1239905.jpg"
+    },
+    "summary": "<p><b>Sons of Anarchy</b> is a drama series that premiered in 2008 on FX.</p>"
+  },
+  {
+    "id": 77,
+    "name": "The Middle",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2009-09-30",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/605/1514143.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/605/1514143.jpg"
+    },
+    "summary": "<p><b>The Middle</b> is a comedy series that premiered in 2009 on ABC.</p>"
+  },
+  {
+    "id": 78,
+    "name": "The Mysteries of Laura",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-09-17",
+    "rating": {
+      "average": 7.3
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/568.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/568.jpg"
+    },
+    "summary": "<p><b>The Mysteries of Laura</b> is a comedy series that premiered in 2014 on NBC.</p>"
+  },
+  {
+    "id": 79,
+    "name": "The Goldbergs",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2013-09-24",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/442/1105185.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/442/1105185.jpg"
+    },
+    "summary": "<p><b>The Goldbergs</b> is a comedy series that premiered in 2013 on ABC.</p>"
+  },
+  {
+    "id": 80,
+    "name": "Modern Family",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2009-09-23",
+    "rating": {
+      "average": 7.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/359/898320.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/359/898320.jpg"
+    },
+    "summary": "<p><b>Modern Family</b> is a comedy series that premiered in 2009 on ABC.</p>"
+  },
+  {
+    "id": 81,
+    "name": "Criminal Minds",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": null,
+    "averageRuntime": 59,
+    "premiered": "2005-09-22",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/626/1567475.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/626/1567475.jpg"
+    },
+    "summary": "<p><b>Criminal Minds</b> is a drama series that premiered in 2005 on Paramount+.</p>"
+  },
+  {
+    "id": 82,
+    "name": "Game of Thrones",
+    "genres": [
+      "Drama",
+      "Adventure",
+      "Fantasy"
+    ],
+    "runtime": 60,
+    "averageRuntime": 61,
+    "premiered": "2011-04-17",
+    "rating": {
+      "average": 8.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/498/1245274.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/498/1245274.jpg"
+    },
+    "summary": "<p><b>Game of Thrones</b> is a drama series that premiered in 2011 on HBO.</p>"
+  },
+  {
+    "id": 83,
+    "name": "The Simpsons",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "1989-12-17",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/637/1594614.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/637/1594614.jpg"
+    },
+    "summary": "<p><b>The Simpsons</b> is a comedy series that premiered in 1989 on FOX.</p>"
+  },
+  {
+    "id": 84,
+    "name": "Family Guy",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "1999-01-31",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/609/1523259.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/609/1523259.jpg"
+    },
+    "summary": "<p><b>Family Guy</b> is a comedy series that premiered in 1999 on FOX.</p>"
+  },
+  {
+    "id": 86,
+    "name": "Stalker",
+    "genres": [
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2014-10-01",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/647.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/647.jpg"
+    },
+    "summary": "<p><b>Stalker</b> is a crime series that premiered in 2014 on CBS.</p>"
+  },
+  {
+    "id": 87,
+    "name": "The Bridge",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-07-10",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/649.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/649.jpg"
+    },
+    "summary": "<p><b>The Bridge</b> is a drama series that premiered in 2013 on FX.</p>"
+  },
+  {
+    "id": 88,
+    "name": "Reign",
+    "genres": [
+      "Drama",
+      "Romance",
+      "History"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2013-10-17",
+    "rating": {
+      "average": 7.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/81/204119.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/81/204119.jpg"
+    },
+    "summary": "<p><b>Reign</b> is a drama series that premiered in 2013 on The CW.</p>"
+  },
+  {
+    "id": 89,
+    "name": "Unforgettable",
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-09-20",
+    "rating": {
+      "average": 7.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/663.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/663.jpg"
+    },
+    "summary": "<p><b>Unforgettable</b> is a drama series that premiered in 2011 on A&E.</p>"
+  },
+  {
+    "id": 90,
+    "name": "Haven",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Supernatural"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-07-09",
+    "rating": {
+      "average": 8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/672.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/672.jpg"
+    },
+    "summary": "<p><b>Haven</b> is a drama series that premiered in 2010 on Syfy.</p>"
+  },
+  {
+    "id": 91,
+    "name": "Bad Judge",
+    "genres": [
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2014-10-02",
+    "rating": {
+      "average": 7.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/678.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/678.jpg"
+    },
+    "summary": "<p><b>Bad Judge</b> is a comedy series that premiered in 2014 on NBC.</p>"
+  },
+  {
+    "id": 92,
+    "name": "A to Z",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2014-10-02",
+    "rating": {
+      "average": 6.7
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/679.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/679.jpg"
+    },
+    "summary": "<p><b>A to Z</b> is a comedy series that premiered in 2014 on NBC.</p>"
+  },
+  {
+    "id": 93,
+    "name": "Parenthood",
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Family"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-03-02",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/685.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/685.jpg"
+    },
+    "summary": "<p><b>Parenthood</b> is a drama series that premiered in 2010 on NBC.</p>"
+  },
+  {
+    "id": 94,
+    "name": "Defiance",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 62,
+    "premiered": "2013-04-15",
+    "rating": {
+      "average": 7.8
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/700.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/700.jpg"
+    },
+    "summary": "<p><b>Defiance</b> is a action series that premiered in 2013 on Syfy.</p>"
+  },
+  {
+    "id": 95,
+    "name": "Falling Skies",
+    "genres": [
+      "Drama",
+      "Action",
+      "Science-Fiction"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2011-06-19",
+    "rating": {
+      "average": 7.6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/498/1246070.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/498/1246070.jpg"
+    },
+    "summary": "<p><b>Falling Skies</b> is a drama series that premiered in 2011 on TNT.</p>"
+  },
+  {
+    "id": 96,
+    "name": "Manhattan Love Story",
+    "genres": [
+      "Comedy",
+      "Romance"
+    ],
+    "runtime": 30,
+    "averageRuntime": 30,
+    "premiered": "2014-09-30",
+    "rating": {
+      "average": 5.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/729.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/729.jpg"
+    },
+    "summary": "<p><b>Manhattan Love Story</b> is a comedy series that premiered in 2014 on ABC.</p>"
+  },
+  {
+    "id": 97,
+    "name": "The Biggest Loser",
+    "genres": [],
+    "runtime": 60,
+    "averageRuntime": 62,
+    "premiered": "2004-10-19",
+    "rating": {
+      "average": 6
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/0/730.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/0/730.jpg"
+    },
+    "summary": "<p><b>The Biggest Loser</b> is a series that premiered in 2004 on USA Network.</p>"
+  },
+  {
+    "id": 98,
+    "name": "Scandal",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2012-04-05",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/303/758518.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/303/758518.jpg"
+    },
+    "summary": "<p><b>Scandal</b> is a drama series that premiered in 2012 on ABC.</p>"
+  },
+  {
+    "id": 99,
+    "name": "America's Next Top Model",
+    "genres": [],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2003-05-20",
+    "rating": {
+      "average": 5.5
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/147/369365.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/147/369365.jpg"
+    },
+    "summary": "<p><b>America's Next Top Model</b> is a series that premiered in 2003 on VH1.</p>"
+  },
+  {
+    "id": 100,
+    "name": "Blue Bloods",
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-09-24",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/593/1482537.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/593/1482537.jpg"
+    },
+    "summary": "<p><b>Blue Bloods</b> is a drama series that premiered in 2010 on CBS.</p>"
+  },
+  {
+    "id": 101,
+    "name": "The Good Wife",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Legal"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2009-09-22",
+    "rating": {
+      "average": 8.1
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/59/148162.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/59/148162.jpg"
+    },
+    "summary": "<p><b>The Good Wife</b> is a drama series that premiered in 2009 on CBS.</p>"
+  },
+  {
+    "id": 102,
+    "name": "Boardwalk Empire",
+    "genres": [
+      "Drama",
+      "Crime"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "2010-09-19",
+    "rating": {
+      "average": 8.4
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/405/1012589.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/405/1012589.jpg"
+    },
+    "summary": "<p><b>Boardwalk Empire</b> is a drama series that premiered in 2010 on HBO.</p>"
+  },
+  {
+    "id": 103,
+    "name": "Law & Order: Special Victims Unit",
+    "genres": [
+      "Drama",
+      "Crime",
+      "Legal"
+    ],
+    "runtime": 60,
+    "averageRuntime": 60,
+    "premiered": "1999-09-20",
+    "rating": {
+      "average": 7.9
+    },
+    "image": {
+      "medium": "https://static.tvmaze.com/uploads/images/medium_portrait/640/1601308.jpg",
+      "original": "https://static.tvmaze.com/uploads/images/original_untouched/640/1601308.jpg"
+    },
+    "summary": "<p><b>Law & Order: Special Victims Unit</b> is a drama series that premiered in 1999 on NBC.</p>"
+  }
+]

@@ -1,0 +1,9 @@
+plugins {
+    alias(libs.plugins.convention.feature.presentation)
+}
+
+dependencies {
+    api(projects.core.ui)
+    api(projects.feature.template.api)
+    api(projects.feature.template.domain)
+}

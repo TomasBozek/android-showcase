@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="checkout_address_title">Doručovací adresa</string>
+    <string name="checkout_address_step">Krok %1$d z %2$d</string>
+    <string name="checkout_address_name">Jméno a příjmení</string>
+    <string name="checkout_address_street">Ulice a číslo</string>
+    <string name="checkout_address_city">Město</string>
+    <string name="checkout_address_postal_code">PSČ</string>
+    <string name="checkout_address_country">Země</string>
+    <string name="checkout_address_phone">Telefon pro kurýra</string>
+    <string name="checkout_address_phone_invalid">Zadejte celé číslo</string>
+    <string name="checkout_address_continue">Pokračovat k doručení</string>
+    <string name="checkout_delivery_title">Doručení</string>
+    <string name="checkout_delivery_step">Krok %1$d z %2$d</string>
+    <string name="checkout_delivery_option">%1$s · %2$s</string>
+    <string name="checkout_delivery_free">Zdarma</string>
+    <plurals name="checkout_delivery_days">
+        <item quantity="one">%1$d pracovní den</item>
+        <item quantity="few">%1$d pracovní dny</item>
+        <item quantity="many">%1$d pracovního dne</item>
+        <item quantity="other">%1$d pracovních dnů</item>
+    </plurals>
+    <string name="checkout_delivery_choose">Vyberte způsob doručení</string>
+    <string name="checkout_delivery_continue">Pokračovat k platbě</string>
+    <string name="checkout_payment_title">Platba</string>
+    <string name="checkout_payment_step">Krok %1$d z %2$d</string>
+    <string name="checkout_payment_note">Karta se strhne až po odeslání objednávky.</string>
+    <string name="checkout_payment_incomplete">Zkontrolujte číslo karty, platnost a kód</string>
+    <string name="checkout_payment_continue">Pokračovat ke shrnutí</string>
+    <string name="checkout_review_title">Shrnutí objednávky</string>
+    <string name="checkout_review_step">Krok %1$d z %2$d</string>
+    <string name="checkout_review_lines">Co objednáváte</string>
+    <string name="checkout_review_line">%1$d × %2$s</string>
+    <string name="checkout_review_address">Doručit na</string>
+    <string name="checkout_review_delivery">Doručení</string>
+    <string name="checkout_review_delivery_value">%1$s · %2$s</string>
+    <string name="checkout_review_promo">Slevový kód</string>
+    <string name="checkout_review_promo_applied">Sleva %1$d %% uplatněna</string>
+    <string name="checkout_review_promo_invalid">Tento kód neplatí</string>
+    <string name="checkout_review_apply">Uplatnit</string>
+    <string name="checkout_review_subtotal">Mezisoučet</string>
+    <string name="checkout_review_discount">Sleva</string>
+    <string name="checkout_review_total">Celkem</string>
+    <string name="checkout_review_place">Objednat</string>
+    <string name="checkout_review_placing">Odesíláme objednávku…</string>
+    <string name="checkout_review_placed">Objednávka %1$s přijata. Děkujeme.</string>
+    <string name="checkout_review_declined_title">Karta byla zamítnuta</string>
+    <string name="checkout_review_declined_message">Banka platbu neschválila. Zkuste jinou kartu.</string>
+    <string name="checkout_review_declined_funds">Na kartě podle banky není dost peněz. Zkuste jinou.</string>
+    <string name="checkout_review_declined_confirm">Použít jinou kartu</string>
+    <string name="checkout_review_payment_needed">Pro dokončení objednávky znovu zadejte platbu.</string>
+    <string name="checkout_review_place_prompt">Odeslat objednávku</string>
+    <string name="checkout_review_step_up_denied">Nepodařilo se potvrdit, že jste to vy. Objednávka nebyla odeslána.</string>
+    <string name="checkout_payment_google_pay">Zaplatit přes Google Pay</string>
+</resources>

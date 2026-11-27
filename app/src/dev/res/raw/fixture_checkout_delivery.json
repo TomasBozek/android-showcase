@@ -1,0 +1,5 @@
+[
+  { "id": "pickup", "name": "Pickup point", "price": 0, "days": 3 },
+  { "id": "standard", "name": "Standard courier", "price": 490, "days": 2 },
+  { "id": "express", "name": "Express courier", "price": 990, "days": 1 }
+]
